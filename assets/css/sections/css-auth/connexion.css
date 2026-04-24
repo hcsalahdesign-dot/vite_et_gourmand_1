@@ -1,0 +1,140 @@
+.page-account {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--collection-de-variables-hero-1);
+}
+
+.account-section {
+  flex: 1;
+  width: 100%;
+  min-height: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px 40px;
+}
+
+.account-section h2 {
+  margin: 0 0 80px 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 40px;
+  font-weight: 600;
+  color: var(--collection-de-variables-footer-1);
+  text-align: center;
+}
+
+.identification-form {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.identification-form input {
+  width: 100%;
+  height: 40px;
+  padding: 0 16px;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 12px;
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+  color: var(--collection-de-variables-footer-1);
+  box-sizing: border-box;
+}
+
+.identification-form__actions {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.identification-form__button {
+  width: 120px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--collection-de-variables-header-CTA-1);
+  color: #ffffff;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.forgot-password {
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  color: var(--collection-de-variables-footer-1);
+  text-decoration: underline;
+}
+
+.create-account-button {
+  width: 600px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--collection-de-variables-bouton-2);
+  color: #ffffff;
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  align-self: center;
+  margin-top: 40px;
+}
+
+.account-actions {
+  width: 600px;
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.account-actions__button {
+  min-width: 215px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--collection-de-variables-bouton-3);
+  color: #ffffff;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.shared-highlights {
+  width: 100%;
+  height: 200px;
+  background-color: var(--collection-de-variables-header-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 350px;
+  padding: 0 40px;
+  flex-shrink: 0;
+}
+
+.shared-highlights__image {
+  width: 180px;
+  height: 150px;
+  overflow: hidden;
+}
+
+.shared-highlights__image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 15px;
+}

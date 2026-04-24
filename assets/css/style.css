@@ -1,0 +1,36 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+
+@import url("/assets/css/sections/header.css");
+@import url("/assets/css/sections/footer.css");
+@import url("/assets/css/sections/home.css");
+
+@import url("/assets/css/responsive.css");
+
+
+
+
+/* ===================== */
+/* BASE */
+/* ===================== */
+
+* {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+button:focus-visible {
+  outline: 2px solid #4a90e2 !important;
+}
+
+
+

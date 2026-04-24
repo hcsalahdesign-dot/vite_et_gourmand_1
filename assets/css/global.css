@@ -1,0 +1,63 @@
+/* ===================================================== */
+/* RESET CSS */
+/* ===================================================== */
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+
+/* ===================================================== */
+/* BASE GLOBALE */
+/* ===================================================== */
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* liens */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* focus clavier (accessibilité) */
+button:focus-visible {
+  outline: 2px solid #4a90e2 !important;
+  outline-offset: 2px;
+}
+
+/* images propres */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ===================================================== */
+/* FONTS (GOOGLE FONTS RECOMMANDÉ) */
+/* ===================================================== */
+
+/*
+À ajouter dans ton HTML :
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+*/
+
+/* ===================================================== */
+/* FONTS UTILISABLES DANS TON PROJET */
+/* ===================================================== */
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+/* titres */
+h1, h2, h3 {
+  font-family: "Cormorant Garamond", serif;
+}

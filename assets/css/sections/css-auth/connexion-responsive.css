@@ -1,0 +1,121 @@
+@media (max-width: 768px) {
+  .account-section {
+    width: 100%;
+    min-height: 520px;
+    padding: 30px 0 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .account-section h2 {
+    margin: 20px 0 20px 0px;
+    font-size: 26px;
+    text-align: center;
+    color: var(--collection-de-variables-footer-1);
+  }
+
+  .identification-form {
+    width: 335px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    gap: 20px;
+  }
+
+  .identification-form input {
+    width: 335px;
+    height: 30px;
+    padding: 0 12px;
+    font-size: 14px;
+    border-radius: 10px;
+    color: var(--collection-de-variables-footer-1);
+    box-sizing: border-box;
+  }
+
+  .identification-form__actions {
+    width: 335px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0px;
+  }
+
+  .forgot-password {
+    font-size: 12px;
+    text-decoration: underline;
+    color: var(--collection-de-variables-header-CTA-1);
+  }
+
+  .identification-form__button {
+  width: 100px;
+  height: 20px;
+  font-size: 12px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+  .create-account-button {
+    width: 335px;
+    height: 25px;
+    margin-top: 50px;
+    font-size: 14px;
+    border-radius: 5px;
+  }
+
+  .account-actions {
+    width: 335px;
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  
+
+.account-actions__button {
+  width: 120px;
+  min-width: 0;
+  height: 20px;
+  font-size: 12px;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+
+  
+
+  .shared-highlights {
+  width: 100%;
+  height: 105px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.shared-highlights__image {
+  width: 65px;
+  height: 60px;
+}
+
+.shared-highlights__image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 10px;
+}
+ .footer-legal {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+}

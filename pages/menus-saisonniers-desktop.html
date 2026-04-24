@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/styleguide/styleguide.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/sections/menu-type.css">
+  <link rel="stylesheet" href="/assets/css/sections/menus-saisonniers-responsive.css">
+
+  <script src="/assets/js/navigation.js" defer></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+
+
+  <title>Vite & Gourmand</title>
+</head>
+
+<body class="page-menu-detail">
+  <header class="header">
+    <nav class="header__nav">
+      <div class="titre-connexion">
+        <h1 class="vite-gourmand">Vite &amp; Gourmand</h1>
+
+        <button class="bouton-mon-compte d-flex align-items-center" data-nav="connexion">
+          <img src="/assets/person-circle.svg" alt="Utilisateur" class="user me-2">
+          <span>Déconnexion</span>
+        </button>
+
+        <div class="nav__mobile-menu">
+          <img src="/assets/menu-burger.svg" alt="menu-burger">
+        </div>
+      </div>
+
+      <div class="liens-navigation">
+        <div class="div-wrapper"><div class="div" data-nav="accueil">Accueil</div></div>
+        <div class="div-wrapper"><div class="div" data-nav="menus">Menu</div></div>
+        <div class="div-wrapper"><div class="div" data-nav="contact">Contact</div></div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page-main">
+    <section class="menu-page-section">
+      <h2>Menus Saisonniers</h2>
+
+      <div class="menu-page-grid">
+        <article class="menu-page-card">
+          <p>
+            Saumon printanier - <span class="menu-price">18,90 €</span>
+          </p>
+          <div class="menu-page-card__image">
+            <img src="/assets/images/Images menus/Saisonniers/Saumon printanier.jpg" alt="Saumon printanier">
+          
+            <button
+            class="add-to-cart-button"
+            type="button"
+            data-menu="Saumon printanier"
+            data-category="Saisonniers"
+           aria-label="Ajouter Saumon printanier à la commande">
+            <img src="/assets/plus-circle-fill-grey.svg" alt="">
+          </button>
+          
+          </div>
+        </article>
+
+        <article class="menu-page-card">
+          <p>
+            Escalope d’automne - <span class="menu-price">16,90 €</span>
+          </p>
+          <div class="menu-page-card__image">
+            <img src="/assets/images/Images menus/Saisonniers/Escalope d’automne.jpg" alt="Escalope d’automne">
+          
+          <button
+            class="add-to-cart-button"
+            type="button"
+            data-menu="Escalope d’automne"
+            data-category="Saisonniers"
+           aria-label="Ajouter Escalope d’automne à la commande">
+            <img src="/assets/plus-circle-fill-grey.svg" alt="">
+          </button>
+
+          </div>
+        </article>
+
+        <article class="menu-page-card">
+          <p>
+            Poisson à la moutarde - <span class="menu-price">14,90 €</span>
+          </p>
+          <div class="menu-page-card__image">
+            <img src="/assets/images/Images menus/Saisonniers/Poisson à la moutarde.jpg" alt="Poisson à la moutarde">
+          
+          <button
+            class="add-to-cart-button"
+            type="button"
+            data-menu="Poisson à la moutarde"
+            data-category="Saisonniers"
+            aria-label="Ajouter Poisson à la moutarde à la commande">
+            <img src="/assets/plus-circle-fill-grey.svg" alt="">
+          </button>
+          </div>
+        </article>
+
+        <article class="menu-page-card">
+          <p>
+            Rôti aux légumes - <span class="menu-price">17,90 €</span>
+          </p>
+          <div class="menu-page-card__image">
+            <img src="/assets/images/Images menus/Saisonniers/global flavours.avif" alt="Rôti aux légumes">
+          
+            <button
+            class="add-to-cart-button"
+            type="button"
+            data-menu="Rôti aux légumes"
+            data-category="Saisonniers"
+           aria-label="Ajouter Rôti aux légumes à la commande">
+            <img src="/assets/plus-circle-fill-grey.svg" alt="">
+          </button>
+          
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+
+        <div class="footer-container">
+
+            <!-- Infos entreprise -->
+            <div class="footer-block">
+            <h3>Infos entreprise</h3>
+            <p>
+                Vite & Gourmand,<br>
+                Julie & José, 33 000 Bordeaux
+            </p>
+           
+            </div>
+
+            <!-- Navigation -->
+            <div class="footer-block">
+            <h3>Navigation</h3>
+            <ul>
+                <li data-nav="accueil">Accueil</li>
+                <li data-nav="menus">Menus</li>
+                <li data-nav="contact">Contact</li>
+                <li data-nav="connexion">Connexion</li>
+            </ul>
+            </div>
+
+            <!-- Horaires -->
+            <div class="footer-block">
+            <h3>Horaires</h3>
+            <p>Lundi - Dimanche : 9h - 19h</p>
+            <p>☎ 05 56 87 42 13</p>
+            </div>
+
+        </div>
+        <small class="footer-legal">
+            Mentions légales | CGV | © 2026 Vite & Gourmand
+        </small>
+
+    </footer>
+</body>
+</html>
+

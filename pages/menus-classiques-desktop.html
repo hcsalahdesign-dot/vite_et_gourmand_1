@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/styleguide/styleguide.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <link rel="stylesheet" href="/assets/css/sections/menu-type.css">
+  <link rel="stylesheet" href="/assets/css/sections/menus-classiques-responsive.css">
+
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+  <script src="/assets/js/navigation.js" defer></script>
+
+  <title>Vite & Gourmand</title>
+</head>
+
+<body class="page-menu-detail">
+  <header class="header">
+    <nav class="header__nav">
+      <div class="titre-connexion">
+        <h1 class="vite-gourmand">Vite &amp; Gourmand</h1>
+
+        <button class="bouton-mon-compte d-flex align-items-center" data-nav="connexion">
+          <img src="/assets/person-circle.svg" alt="Utilisateur" class="user me-2">
+          <span>Déconnexion</span>
+        </button>
+
+        <div class="nav__mobile-menu">
+          <img src="/assets/menu-burger.svg" alt="menu-burger">
+        </div>
+      </div>
+
+      <div class="liens-navigation">
+        <div class="div-wrapper"><div class="div" data-nav="accueil">Accueil</div></div>
+        <div class="div-wrapper"><div class="div" data-nav="menus">Menu</div></div>
+        <div class="div-wrapper"><div class="div" data-nav="contact">Contact</div></div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page-main">
+    <section class="menu-page-section">
+      <h2>Menus Classiques</h2>
+
+      <div class="menu-page-grid">
+        <article class="menu-page-card">
+          <p>
+            Poulet à la crème - <span class="menu-price">13,90 €</span>
+          </p>
+
+          <div class="menu-page-card__image">
+            <img src="/assets/images/Images menus/Classiques/Poulet à la crème.jpg" alt="Poulet à la crème">
+
+            <button
+              class="add-to-cart-button"
+              type="button"
+              data-menu="Poulet à la crème"
+              data-category="Classiques"
+              aria-label="Ajouter Poulet à la crème à la commande">
+              <img src="/assets/plus-circle-fill-grey.svg" alt="">
+            </button>
+          </div>
+
+        </article>
+
+        <article class="menu-page-card">
+          <p>
+            Cabillaud à la provençale - <span class="menu-price">14,90 €</span>
+          </p>
+          <div class="menu-page-card__image">
+            <img src="/assets/images/Images menus/Classiques/cabillaud à la provençale.jpeg" alt="Cabillaud à la provençale">
+           <button
+            class="add-to-cart-button"
+            type="button"
+            data-menu="Cabillaud à la provençale"
+            data-category="Classiques"
+            aria-label="Ajouter Cabillaud à la provençale à la commande">
+            <img src="/assets/plus-circle-fill-grey.svg" alt="">
+            </button>
+          </div>
+          
+        </article>
+
+        <article class="menu-page-card">
+          <p>
+            Ragoût de bœuf - <span class="menu-price">12,90 €</span>
+          </p>
+          <div class="menu-page-card__image">
+           
+            <img src="/assets/images/Images menus/Classiques/Ragout de bœuf.jpg" alt="Ragoût de bœuf">
+          
+          <button
+            class="add-to-cart-button"
+            type="button"
+            data-menu="Ragoût de bœuf"
+            data-category="Classiques"
+           aria-label="Ajouter Ragoût de bœuf à la commande">
+            <img src="/assets/plus-circle-fill-grey.svg" alt="">
+          </button>
+
+          </div>
+          
+        </article>
+
+        <article class="menu-page-card">
+          <p>
+            Poulet à la moutarde - <span class="menu-price">13,90 €</span>
+          </p>
+          <div class="menu-page-card__image">
+            <img src="/assets/images/Images menus/Classiques/poulet à la moutarde.jpg" alt="Poulet à la moutarde">
+          
+          <button
+            class="add-to-cart-button"
+            type="button"
+            data-menu="Poulet à la moutarde"
+            data-category="Classiques"
+            aria-label="Ajouter Poulet à la moutarde à la commande">
+            <img src="/assets/plus-circle-fill-grey.svg" alt="">
+          </button>
+          
+          </div>
+          
+        </article>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+
+        <div class="footer-container">
+
+            <!-- Infos entreprise -->
+            <div class="footer-block">
+            <h3>Infos entreprise</h3>
+            <p>
+                Vite & Gourmand,<br>
+                Julie & José, 33 000 Bordeaux
+            </p>
+           
+            </div>
+
+            <!-- Navigation -->
+            <div class="footer-block">
+            <h3>Navigation</h3>
+            <ul>
+                <li data-nav="accueil">Accueil</li>
+                <li data-nav="menus">Menus</li>
+                <li data-nav="contact">Contact</li>
+                <li data-nav="connexion">Connexion</li>
+            </ul>
+            </div>
+
+            <!-- Horaires -->
+            <div class="footer-block">
+            <h3>Horaires</h3>
+            <p>Lundi - Dimanche : 9h - 19h</p>
+            <p>☎ 05 56 87 42 13</p>
+            </div>
+
+        </div>
+        <small class="footer-legal">
+            Mentions légales | CGV | © 2026 Vite & Gourmand
+        </small>
+
+    </footer>
+
+
+</body>
+
+
+</html>
+

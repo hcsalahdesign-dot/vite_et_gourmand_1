@@ -1,0 +1,90 @@
+/* FOOTER */
+.footer {
+  background-color: #50443a;
+  color: white;
+  padding: 10px 20px 20px;
+  font-family: "Lato", sans-serif;
+}
+
+/* CONTAINER */
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  max-width: 100%;
+  margin: 0 auto;
+  gap: 200px;
+}
+
+/* BLOCS */
+.footer-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  min-height: 160px;
+  position: relative;
+}
+
+.footer-block:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -100px;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 140px;
+  background-color: white;
+}
+
+/* TITRE */
+.footer-block h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
+  margin: 0 0 8px 0;
+}
+
+/* TEXTE */
+.footer-block p {
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* BAS DE BLOC */
+.footer-block small {
+  font-size: 10px;
+  opacity: 0.8;
+  text-align: left;
+  width: 100%;
+  margin-top: 4px;
+}
+
+/* NAVIGATION */
+.footer-block ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-block li {
+  font-style: italic;
+  cursor: pointer;
+}
+
+.footer-block li:hover {
+  text-decoration: underline;
+}
+
+/* MENTIONS EN BAS SI UTILISÉES HORS DES BLOCS */
+.footer-legal {
+  display: block;
+  margin-top: 20px;
+  font-size: 10px;
+  text-align: left;
+}

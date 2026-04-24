@@ -1,0 +1,139 @@
+.nav__mobile-menu {
+  display: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .header .header__nav {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background-color: #c7c5bc;
+  }
+
+  .header .titre-connexion {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+  }
+
+  .header .vite-gourmand {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    color: #522404;
+    font-size: 30px;
+  }
+
+  .header .liens-navigation {
+    display: flex;
+    width: 100%;
+    height: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background-color: #d95605;
+  }
+
+  .header .div,
+  .header .bouton-mon-compte {
+    display: none;
+  }
+
+  .nav__mobile-menu {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav__mobile-menu img {
+    width: 30px;
+    height: 30px;
+    display: block;
+  }
+
+  .page-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--collection-de-variables-hero-1);
+  }
+
+  .menu-page-section {
+    width: 100%;
+    min-height: 960px;
+    padding: 10px 0 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    box-sizing: border-box;
+  }
+
+  .menu-page-grid {
+    margin-top: 0;
+  }
+
+  .menu-page-section h2 {
+    margin: 0;
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .menu-page-grid {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-top: 20px;
+  }
+
+  .menu-page-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .menu-page-card p {
+    margin: 0 0 15px 0;
+    font-size: 18px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .menu-page-card__image {
+    width: 200px;
+    height: 160px;
+  }
+
+  .menu-page-card__image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+
+  .footer-legal {
+    display: block;
+    margin-top: 20px;
+    font-size: 10px;
+    text-align: center;
+  }
+}
