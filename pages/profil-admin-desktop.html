@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="/assets/css/sections/profil-admin-responsive.css">
 
   <script src="/assets/js/navigation.js" defer></script>
+  <script src="/assets/js/auth.js" defer></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,26 +72,20 @@
             <h2>Espace Administrateur</h2>
 
             <div class="client-table client-table--first">
-            <div class="client-table__row client-table__row--title-primary">
-                Gestion des Employés
-            </div>
+                <div class="client-table__row client-table__row--title-primary">
+                    Gestion des Employés
+                </div>
 
-            <div class="client-table__row client-table__row--title-secondary client-table__row--columns employees-columns">
-                <span>Nom</span>
-                <span>Email</span>
-                <span>Rôle</span>
-                <span>Statut</span>
-                <span>Actions</span>
-            </div>
+                <div class="client-table__row client-table__row--title-secondary client-table__row--columns employees-columns">
+                    <span>Nom</span>
+                    <span>Email</span>
+                    <span>Rôle</span>
+                    <span>Statut</span>
+                    <span>Actions</span>
+                </div>
 
-            <div class="client-table__row client-table__row--light"></div>
-            <div class="client-table__row client-table__row--dark"></div>
-            <div class="client-table__row client-table__row--light"></div>
-            <div class="client-table__row client-table__row--dark"></div>
-            <div class="client-table__row client-table__row--light"></div>
-            <div class="client-table__row client-table__row--dark"></div>
-            <div class="client-table__row client-table__row--light"></div>
-            <div class="client-table__row client-table__row--dark"></div>
+                <div id="employeesContainer"></div>
+                
             </div>
 
             <div class="client-table client-table--second">

@@ -97,6 +97,58 @@ body.page-admin-space {
   align-items: center;
 }
 
+.client-table__row--light,
+.client-table__row--dark {
+  display: grid;
+  grid-template-columns: 1.5fr 2fr 1fr 1fr 1.2fr;
+  align-items: center;
+}
+
+
+.client-table__row {
+  color: text#ffffff;
+}
+
+
+.client-table__row--light span,
+.client-table__row--dark span {
+  color: var(--couleur-texte-tableaux-profils);
+}
+
+.client-table__row span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 5px;
+  color: #ffffff;
+  transition: transform 0.2s ease;
+}
+
+.icon-btn:hover {
+  transform: scale(1.2);
+}
+
+.icon-btn.delete {
+  color: #ff4d4d;
+}
+
+.icon-btn.edit {
+  color: #ffd166;
+}
+
+
+
+
+
+
 
 
 .shared-highlights {
