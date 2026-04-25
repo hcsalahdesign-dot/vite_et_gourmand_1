@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/assets/css/style.css">
 
   <script src="/assets/js/navigation.js" defer></script>
+  <script src="/assets/js/auth.js"></script>
   
   <link rel="stylesheet" href="/assets/css/sections/css-auth/connexion.css">
   <link rel="stylesheet" href="/assets/css/sections/css-auth/connexion-responsive.css">
@@ -50,39 +51,44 @@
     <section class="account-section">
         <h2>Mon Compte</h2>
 
-        <form class="identification-form">
-            <input type="email" placeholder="Veuillez saisir votre email">
-            <input type="password" placeholder="Veuillez saisir votre mot de passe">
+        <form id="loginForm" class="identification-form">
+            <input type="email" id="email" placeholder="Veuillez saisir votre email" required>
+
+            <input 
+                type="password" id="password" placeholder="Veuillez saisir votre mot de passe" required >
 
             <div class="identification-form__actions">
                 <a href="#" class="forgot-password">Mot de passe oublié ?</a>
-                <button type="submit" class="identification-form__button">Se connecter</button>
+                <button type="submit" class="identification-form__button">
+                    Se connecter
+                </button>
             </div>
 
-            <button type="button" class="create-account-button" data-nav="inscription">Créer un compte</button>
+            <button type="button" class="create-account-button" data-nav="inscription">
+                Créer un compte
+            </button>
 
         </form>
 
         <div class="account-actions">
-            
             <button class="account-actions__button" data-nav="admin">Admin</button>
             <button class="account-actions__button" data-nav="employe">Employé</button>
         </div>
     </section>
 
-    <section class="shared-highlights">
-        <div class="shared-highlights__image">
-        <img src="/assets/images/chapeau-cuisine.jpg" alt="Équipe qualifiée">
-        </div>
+        <section class="shared-highlights">
+            <div class="shared-highlights__image">
+            <img src="/assets/images/chapeau-cuisine.jpg" alt="Équipe qualifiée">
+            </div>
 
-        <div class="shared-highlights__image">
-        <img src="/assets/images/produits-locaux.jpg" alt="Produits frais et locaux">
-        </div>
+            <div class="shared-highlights__image">
+            <img src="/assets/images/produits-locaux.jpg" alt="Produits frais et locaux">
+            </div>
 
-        <div class="shared-highlights__image">
-        <img src="/assets/images/logo-faitmaison.jpg" alt="Fait maison">
-        </div>
-    </section>
+            <div class="shared-highlights__image">
+            <img src="/assets/images/logo-faitmaison.jpg" alt="Fait maison">
+            </div>
+        </section>
 </main>
 
 

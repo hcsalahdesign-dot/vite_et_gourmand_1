@@ -49,24 +49,32 @@
       <section class="signup-section">
         <h2>S'inscrire</h2>
 
-        <form class="signup-form">
-          <input type="text" placeholder="Veuillez saisir votre nom">
-          <input type="text" placeholder="Veuillez saisir votre prénom">
-          <input type="tel" placeholder="Veuillez saisir votre numéro de téléphone">
-          <input type="email" placeholder="Veuillez saisir votre adresse email">
-          <input type="text" placeholder="Veuillez saisir votre adresse postale complète">
+        <form id="signupForm" class="signup-form">
 
-          <button type="button" class="signup-form__button">Créer un compte</button>
+          <input type="text" id="signupLastName" placeholder="Veuillez saisir votre nom">
 
-          <input type="password" class="signup-password-field" placeholder="Veuillez saisir votre mot de passe">
-          <input type="password" placeholder="Veuillez confirmer votre mot de passe">
+          <input type="text" id="signupFirstName" placeholder="Veuillez saisir votre prénom">
 
+          <input type="tel" id="signupPhone" placeholder="Veuillez saisir votre numéro de téléphone">
+
+          <input type="email" id="signupEmail" placeholder="Veuillez saisir votre adresse email" required>
+
+          <input type="text" id="signupAddress" placeholder="Veuillez saisir votre adresse postale complète">
+
+          <input type="password" id="signupPassword" placeholder="Veuillez saisir votre mot de passe" required>
+
+          <input type="password" id="signupConfirmPassword" placeholder="Veuillez confirmer votre mot de passe" required>
 
           <p class="signup-password-note">
-            12 caractères minimum, 1 majuscule, 1 minuscule, caractères spéciaux
-            (&amp;, #, @, ?, !)
+            12 caractères minimum, 1 majuscule, 1 minuscule, caractères spéciaux (&, #, @, ?, !)
           </p>
+
+          <button type="submit" class="signup-form__button">
+            Créer un compte
+          </button>
+
         </form>
+        
       </section>
   </main>
 
