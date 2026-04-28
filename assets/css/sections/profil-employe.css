@@ -27,6 +27,7 @@ body.page-employe-space {
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 
   padding: 20px 40px 30px;
   box-sizing: border-box;
@@ -46,7 +47,7 @@ body.page-employe-space {
 }
 
 /* =========================================================
-   TABLEAU
+   TABLEAU EMPLOYÉS
 ========================================================= */
 
 .client-table {
@@ -57,38 +58,22 @@ body.page-employe-space {
   overflow: hidden;
 }
 
-/* =========================================================
-   HEADERS
-========================================================= */
-
-.client-table__row {
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  font-family: "Lato", sans-serif;
-}
-
+/* header */
 .client-table__row--title-primary {
   height: 30px;
   background-color: var(--collection-de-variables-couleur-1-tableau);
   color: #ffffff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: "Cormorant Garamond", serif;
   font-size: 18px;
   font-weight: 700;
-  justify-content: center;
 }
 
-.client-table__row--title-secondary {
-  height: 30px;
-  background-color: var(--collection-de-variables-bouton-3);
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 700;
-}
-
-/* =========================================================
-   STRUCTURE LIGNES
-========================================================= */
-
+/* lignes employés */
 .row-employe {
   display: flex;
   height: 60px;
@@ -103,7 +88,7 @@ body.page-employe-space {
 }
 
 /* =========================================================
-   COLONNES
+   COLONNES (BASE COMMUNE)
 ========================================================= */
 
 .col-left {
@@ -119,29 +104,30 @@ body.page-employe-space {
 
   font-size: 14px;
   font-weight: 600;
+  font-family: "Lato", sans-serif;
 
   border-right: 1px solid #fff;
   border-bottom: 1px solid #fff;
 
-  gap: 4px;
+  gap: 6px;
 }
 
 .col-center {
   width: 400px;
 
   display: flex;
-  flex-direction: column; /* base */
-
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
   font-size: 12px;
   color: #3F535B;
+  font-family: "Lato", sans-serif;
 
   border-right: 1px solid #fff;
   border-bottom: 1px solid #fff;
 
-  gap: 4px;
+  gap: 6px;
 }
 
 .col-right {
@@ -150,28 +136,106 @@ body.page-employe-space {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Lato", sans-serif;
 
-  gap: 40px;
+  gap: 30px;
 
   border-bottom: 1px solid #fff;
 }
 
 /* =========================================================
-   🔥 CORRECTION MENUS (IMPORTANT)
+   MENUS (NOUVEAU SYSTEME)
 ========================================================= */
 
-.menus .col-center {
-  flex-direction: row; /* ✅ horizontal */
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
+.block.menus {
+  width: 100%;
+  max-width: 1000px;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 20px;
 }
 
-/* blocs internes */
-.menus .center-block {
+/* header menus */
+.block-header {
+  height: 30px;
+  background-color: var(--collection-de-variables-couleur-1-tableau);
+  color: #ffffff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* lignes menus */
+.row-menus {
+  display: flex;
+  min-height: 60px;
+}
+
+/* alternance */
+.row-menus:nth-child(odd) {
+  background: #d9d9d9;
+}
+.row-menus:nth-child(even) {
+  background: #cfcfcf;
+}
+
+/* colonnes menus (override propre) */
+
+.menus .col-left {
+  width: 300px;
+}
+
+.menus .col-center {
+  width: 500px;
+
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+
+  padding: 10px 15px;
+  gap: 6px;
+}
+
+.menus .col-right {
+  width: 200px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
+
+  gap: 60px;
+}
+
+/* lignes internes */
+.menu-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+}
+
+/* contenu */
+.menu-name {
+  flex: 2;
+  white-space: nowrap;
+}
+
+.menu-price {
+  flex: 1;
+  text-align: right;
+}
+
+.menu-status {
+  flex: 1;
+  text-align: right;
 }
 
 /* =========================================================
@@ -200,41 +264,26 @@ body.page-employe-space {
   font-size: 11px;
 }
 
-/* =========================================================
-   HEADERS GRID
-========================================================= */
-
-.menus-columns {
-  display: grid;
-  grid-template-columns: 1.5fr 1.2fr 1.5fr 1fr 1fr 1.2fr;
-}
-
-.order-columns {
-  display: grid;
-  grid-template-columns: 2fr 1.2fr 1fr 1fr 1.6fr;
-}
-
-/* =========================================================
-   IMAGES
-========================================================= */
+/* ================= IMAGES ================= */
 
 .shared-highlights {
   width: 100%;
   height: 200px;
-
   background-color: var(--collection-de-variables-header-1);
 
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 
-  gap: 120px;
+  gap: clamp(20px, 5vw, 120px);
   padding: 0 40px;
+  box-sizing: border-box;
 }
 
 .shared-highlights__image {
   width: 180px;
   height: 150px;
+  flex-shrink: 0;
 }
 
 .shared-highlights__image img {

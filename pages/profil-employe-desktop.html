@@ -72,61 +72,7 @@
         <section class="employe-space-section">
             <h2>Espace Employé</h2>
 
-            <!-- ================= MENU ================= -->
-            <div class="client-table client-table--first">
-
-                <!-- TITRE -->
-                <div class="client-table__row client-table__row--title-primary">
-                    Gestion des menus
-                </div>
-
-                <!-- CLIENT 1 -->
-                <div class="row-employe menus">
-                    <div class="col-left">Client 1<br><small>01/01/2026</small></div>
-                    <div class="col-center">Menu standard<br><small>4 pers</small></div>
-                    <div class="col-center">45€<br><span class="actif">validé</span></div>
-                    <div class="col-right">
-                        <img src="/assets/pencil-square.svg" class="icon">
-                        <img src="/assets/trash3.svg" class="icon">
-                    </div>
-                </div>
-
-                <!-- CLIENT 2 -->
-                <div class="row-employe menus">
-                    <div class="col-left">Client 2<br><small>02/01/2026</small></div>
-                    <div class="col-center">Menu végétarien<br><small>2 pers</small></div>
-                    <div class="col-center">30€<br><span class="actif">validé</span></div>
-                    <div class="col-right">
-                        <img src="/assets/pencil-square.svg" class="icon">
-                        <img src="/assets/trash3.svg" class="icon">
-                    </div>
-                </div>
-
-                <!-- CLIENT 3 -->
-                <div class="row-employe menus">
-                    <div class="col-left">Client 3<br><small>03/01/2026</small></div>
-                    <div class="col-center">Menu événement<br><small>6 pers</small></div>
-                    <div class="col-center">90€<br><span class="inactif">en attente</span></div>
-                    <div class="col-right">
-                        <img src="/assets/pencil-square.svg" class="icon">
-                        <img src="/assets/trash3.svg" class="icon">
-                    </div>
-                </div>
-
-                <!-- CLIENT 4 -->
-                <div class="row-employe menus">
-                    <div class="col-left">Client 4<br><small>04/01/2026</small></div>
-                    <div class="col-center">Menu saisonnier<br><small>3 pers</small></div>
-                    <div class="col-center">60€<br><span class="actif">validé</span></div>
-                    <div class="col-right">
-                        <img src="/assets/pencil-square.svg" class="icon">
-                        <img src="/assets/trash3.svg" class="icon">
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- ================= COMMANDES ================= -->
+ <!-- ================= COMMANDES ================= -->
             <div class="client-table client-table--second">
 
                 <!-- TITRE -->
@@ -136,9 +82,10 @@
 
                 <!-- CLIENT 1 -->
                 <div class="row-employe orders">
-                    <div class="col-left">Menu standard</div>
-                    <div class="col-center">01/01/2026</div>
-                    <div class="col-center">4 pers</div>
+                    <div class="col-left">Menu Classique</div>
+                    <div class="col-center">Poulet à la crème</div>
+                    <div class="col-center">01/01/2026 - 10 personnes</div>
+                    <div class="col-center total">139€</div>
                     <div class="col-center"><span class="actif">validé</span></div>
                     <div class="col-right">
                         <img src="/assets/pencil-square.svg" class="icon">
@@ -149,8 +96,9 @@
                 <!-- CLIENT 2 -->
                 <div class="row-employe orders">
                     <div class="col-left">Menu végétarien</div>
-                    <div class="col-center">02/01/2026</div>
-                    <div class="col-center">2 pers</div>
+                    <div class="col-center">Pavé de légumes proteiné</div>
+                    <div class="col-center">02/01/2026 - 8 personnes</div>
+                    <div class="col-center total">151€20</div>
                     <div class="col-center"><span class="actif">validé</span></div>
                     <div class="col-right">
                         <img src="/assets/pencil-square.svg" class="icon">
@@ -161,8 +109,9 @@
                 <!-- CLIENT 3 -->
                 <div class="row-employe orders">
                     <div class="col-left">Menu événement</div>
-                    <div class="col-center">03/01/2026</div>
-                    <div class="col-center">6 pers</div>
+                    <div class="col-center">Classique Entreprise</div>
+                    <div class="col-center">03/01/2026 - 26 personnes</div>
+                    <div class="col-center total">439€40</div>
                     <div class="col-center"><span class="inactif">en attente</span></div>
                     <div class="col-right">
                         <img src="/assets/pencil-square.svg" class="icon">
@@ -172,6 +121,189 @@
 
             </div>
 
+
+            <!-- ================= MENU ================= -->
+            <div class="block menus">
+
+                    <div class="block-header">Gestion des menus</div>
+
+                        <!-- MENU-TYPE 1 -->
+                        <div class="row-menus">
+
+                            <div class="col-left">
+                            Menus Classiques<br>
+                            <small>01/05/2026</small>
+                            </div>
+
+                            <div class="col-center">
+
+                            <div class="menu-line">
+                                <span class="menu-name">Poulet à la crème</span>
+                                <span class="menu-price">13€90</span>
+                                <span class="menu-status actif">disponible</span>
+                            </div>
+
+                            <div class="menu-line">
+                                <span class="menu-name">Ragoût de boeuf</span>
+                                <span class="menu-price">12€90</span>
+                                <span class="menu-status actif">disponible</span>
+                            </div>
+
+                            <div class="menu-line">
+                                <span class="menu-name">Cabillaud à la provençale</span>
+                                <span class="menu-price">14€90</span>
+                                <span class="menu-status inactif">indisponible</span>
+                            </div>
+
+                            <div class="menu-line">
+                                <span class="menu-name">Poulet à la moutarde</span>
+                                <span class="menu-price">13€90</span>
+                                <span class="menu-status actif">disponible</span>
+                            </div>
+
+                            </div>
+
+                            <div class="col-right">
+                            <img src="/assets/pencil-square.svg" class="icon">
+                            <img src="/assets/trash3.svg" class="icon">
+                            </div>
+
+                        </div>
+
+                        <!-- MENU-TYPE 2 -->
+                        <div class="row-menus">
+
+                            <div class="col-left">
+                            Menus Végétariens<br>
+                            <small>01/05/2026</small>
+                            </div>
+
+                            <div class="col-center">
+
+                            <div class="menu-line">
+                                <span class="menu-name">Assiette crudités</span>
+                                <span class="menu-price">12,90 €</span>
+                                <span class="menu-status actif">disponible</span>
+                            </div>
+
+                            <div class="menu-line">
+                                <span class="menu-name">Raviolis aux légumes</span>
+                                <span class="menu-price">14,90 €</span>
+                                <span class="menu-status actif">disponible</span>
+                            </div>
+
+                            <div class="menu-line">
+                                <span class="menu-name">Pavé de légumes proteiné</span>
+                                <span class="menu-price">18,90 €</span>
+                                <span class="menu-status actif">disponible</span>
+                            </div>
+
+                            <div class="menu-line">
+                                <span class="menu-name">Soupe de potimarron</span>
+                                <span class="menu-price">12,90 €</span>
+                                <span class="menu-status actif">disponible</span>
+                            </div>
+
+                            </div>
+
+                            <div class="col-right">
+                            <img src="/assets/pencil-square.svg" class="icon">
+                            <img src="/assets/trash3.svg" class="icon">
+                            </div>
+
+                        </div>
+
+                        <!-- MENU-TYPE 3 -->
+                        <div class="row-menus">
+
+                            <div class="col-left">
+                                Menus Événements<br>
+                                <small>03/01/2026</small>
+                            </div>
+
+                            <div class="col-center">
+
+                                <div class="menu-line">
+                                    <span class="menu-name">Classique Entreprises</span>
+                                    <span class="menu-price">16,90 €</span>
+                                    <span class="menu-status actif">disponible</span>
+                                </div>
+
+                                <div class="menu-line">
+                                    <span class="menu-name">Spécial Noël</span>
+                                    <span class="menu-price">15,90 €</span>
+                                    <span class="menu-status actif">disponible</span>
+                                </div>
+
+                                <div class="menu-line">
+                                    <span class="menu-name">Banquet végétarien</span>
+                                    <span class="menu-price">14,90 €</span>
+                                    <span class="menu-status actif">disponible</span>
+                                </div>
+
+                                <div class="menu-line">
+                                    <span class="menu-name">Banquet montagnard</span>
+                                    <span class="menu-price">18,90 €</span>
+                                    <span class="menu-status actif">disponible</span>
+                                </div>
+
+                            </div>
+
+                            <div class="col-right">
+                                <img src="/assets/pencil-square.svg" class="icon">
+                                <img src="/assets/trash3.svg" class="icon">
+                            </div>
+
+                        </div>
+
+                        <!-- MENU-TYPE 4 -->
+                        <div class="row-menus">
+
+                            <div class="col-left">
+                            Menus Saisonniers<br>
+                            <small>03/01/2026</small>
+                            </div>
+
+                            <div class="col-center">
+
+                                <div class="menu-line">
+                                    <span class="menu-name">Saumon printanier</span>
+                                    <span class="menu-price">18,90 €</span>
+                                    <span class="menu-status actif">disponible</span>
+                                </div>
+
+                                <div class="menu-line">
+                                    <span class="menu-name">Escalope d’automne</span>
+                                    <span class="menu-price">16,90 €</span>
+                                    <span class="menu-status inactif">indisponible</span>
+                                </div>
+
+                                <div class="menu-line">
+                                    <span class="menu-name">Poisson à la moutarde</span>
+                                    <span class="menu-price">14,90 €</span>
+                                    <span class="menu-status actif">disponible</span>
+                                </div>
+
+                                <div class="menu-line">
+                                    <span class="menu-name">Rôti aux légumes</span>
+                                    <span class="menu-price">17,90 €</span>
+                                    <span class="menu-status actif">disponible</span>
+                                </div>
+
+                            </div>
+
+                            <div class="col-right">
+                            <img src="/assets/pencil-square.svg" class="icon">
+                            <img src="/assets/trash3.svg" class="icon">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+           
         </section>
 
         <!-- ================= IMAGES ================= -->

@@ -1,129 +1,201 @@
+/* =========================================================
+   RESPONSIVE GLOBAL
+========================================================= */
+
 @media (max-width: 768px) {
-  
+
+  body {
+    overflow-x: hidden;
+  }
+
   .page-main {
-  flex: 1;
-  min-height: auto;
-}
-  
-   .employe-space-section {
-  flex: 1;
-  width: 100%;
-  min-height: auto;
-  height: 600px;
+    min-height: auto;
+  }
+
+  .employe-space-section {
+    padding: 15px;
+    gap: 20px;
+  }
+
+  .employe-space-section h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+
+  /* =========================================================
+     TABLE GÉNÉRALE
+  ========================================================= */
+
+  .client-table {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* =========================================================
+     EMPLOYÉS
+  ========================================================= */
+
+  .row-employe {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .col-left,
+  .col-center,
+  .col-right {
+    width: 100%;
+    border-right: none;
+    text-align: center;
+  }
+
+  .col-right {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 0;
+  }
+
+  /* ================= MENUS ================= */
+
+.menus .row-menus {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 20px 40px 30px;
-  background-color: var(--collection-de-variables-hero-1);
+  width: 100%;
+}
+
+/* colonnes empilées */
+.menus .col-left,
+.menus .col-center,
+.menus .col-right {
+  width: 100%;
+  flex: none;
+  padding: 8px;
+  border-right: none;
+  border-bottom: 1px solid #ffffff;
   box-sizing: border-box;
 }
 
-.client-table {
-  width: 335px;
-  max-width: 100%;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.client-table__row {
+/* centre en liste */
+.menus .col-center {
   display: flex;
-  align-items: center;
-  padding: 0 10px;
-  font-family: "Lato", sans-serif;
-  color: var(--collection-de-variables-footer-1);
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
 }
 
-.client-table__row--title-primary {
-  height: 30px;
-  background-color: var(--collection-de-variables-couleur-1-tableau);
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 700;
+/* ligne menu */
+.menu-line {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+/* prix + statut */
+.menu-price,
+.menu-status {
+  text-align: left;
+}
+
+/* icônes actions */
+.menus .col-right {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
-  text-align: center;
+  align-items: center;
+  gap: 60px;
 }
 
-.client-table__row--title-secondary {
-  height: 30px;
-  background-color: var(--collection-de-variables-bouton-3);
-  color: #ffffff;
+/* texte secondaire */
+.menus .center-block {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* statut */
+.actif,
+.inactif {
   font-size: 10px;
-  font-weight: 700;
 }
 
-.client-table__row--light {
-  height: 15px;
-  background-color: var(--collection-de-variables-couleur-2-tableau);
+  /* =========================================================
+     COMMANDES
+  ========================================================= */
+
+  .orders .col-left,
+  .orders .col-center,
+  .orders .col-right {
+    width: 100%;
+    min-height: 30px;
+    height: auto;
+  }
+
+  .orders .col-left {
+  font-weight: 600;
+  font-size: 14px;
+  text-align: left;
+  min-height: 50px;
 }
 
-.client-table__row--dark {
-  height: 15px;
-  background-color: var(--collection-de-variables-couleur-3-tableau);
+.col-right {
+  gap: 60px; 
 }
+  .orders .row-employe {
+    flex-direction: column;
+  }
 
+  /* ordre lisible mobile */
+  .orders .col-center {
+    display: flex;
+    justify-content: center;
+    
+  }
 
-.client-table__row--columns span {
-  text-align: center;
-}
+  /* =========================================================
+     ICONES
+  ========================================================= */
 
-.employees-columns {
-  display: grid;
-  grid-template-columns: 1.5fr 2fr 1fr 1fr 1.2fr;
-  align-items: center;
-}
+  .icon {
+    width: 14px;
+    height: 14px;
+    
+  }
 
-.menus-columns {
-  display: grid;
-  grid-template-columns: 1.5fr 1.2fr 1.5fr 1fr 1fr 1.2fr;
-  align-items: center;
-}
+  /* =========================================================
+     STATUTS
+  ========================================================= */
 
-.order-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  align-items: center;
-}
+  .actif,
+  .inactif {
+    font-size: 10px;
+  }
+
+  /* ================= IMAGES BAS ================= */
 
   .shared-highlights {
-  width: 100%;
-  height: 105px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-  padding: 0 20px;
-  box-sizing: border-box;
-  background-color: var(--collection-de-variables-header-1);
-}
-
-.shared-highlights__image {
-  width: 65px;
-  height: 60px;
-}
-
-.shared-highlights__image img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  border-radius: 10px;
-}
- .footer-legal {
-  display: block;
-  width: 100%;
-  text-align: center;
-}
-
-.label-full {
-    display: none;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    gap: 30px;
+    display: flex;
+    justify-content: center;
   }
 
-  .label-short {
-    display: inline;
+  .shared-highlights__image {
+    width: 70px;
+    height: 60px;
+  }
+
+  .shared-highlights__image img {
+    border-radius: 10px;
+  }
+
+  /* ================= FOOTER ================= */
+
+  .footer-legal {
+    text-align: center;
+    width: 100%;
   }
 }
-
-body { overflow-x: hidden; }
 
