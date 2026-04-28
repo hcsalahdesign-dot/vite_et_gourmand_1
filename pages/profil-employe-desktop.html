@@ -68,65 +68,115 @@
   </header>
 
     <main class="page-main">
+
         <section class="employe-space-section">
             <h2>Espace Employé</h2>
 
+            <!-- ================= MENU ================= -->
             <div class="client-table client-table--first">
-            <div class="client-table__row client-table__row--title-primary">
-                Gestion des menus
+
+                <!-- TITRE -->
+                <div class="client-table__row client-table__row--title-primary">
+                    Gestion des menus
+                </div>
+
+                <!-- CLIENT 1 -->
+                <div class="row-employe menus">
+                    <div class="col-left">Client 1<br><small>01/01/2026</small></div>
+                    <div class="col-center">Menu standard<br><small>4 pers</small></div>
+                    <div class="col-center">45€<br><span class="actif">validé</span></div>
+                    <div class="col-right">
+                        <img src="/assets/pencil-square.svg" class="icon">
+                        <img src="/assets/trash3.svg" class="icon">
+                    </div>
+                </div>
+
+                <!-- CLIENT 2 -->
+                <div class="row-employe menus">
+                    <div class="col-left">Client 2<br><small>02/01/2026</small></div>
+                    <div class="col-center">Menu végétarien<br><small>2 pers</small></div>
+                    <div class="col-center">30€<br><span class="actif">validé</span></div>
+                    <div class="col-right">
+                        <img src="/assets/pencil-square.svg" class="icon">
+                        <img src="/assets/trash3.svg" class="icon">
+                    </div>
+                </div>
+
+                <!-- CLIENT 3 -->
+                <div class="row-employe menus">
+                    <div class="col-left">Client 3<br><small>03/01/2026</small></div>
+                    <div class="col-center">Menu événement<br><small>6 pers</small></div>
+                    <div class="col-center">90€<br><span class="inactif">en attente</span></div>
+                    <div class="col-right">
+                        <img src="/assets/pencil-square.svg" class="icon">
+                        <img src="/assets/trash3.svg" class="icon">
+                    </div>
+                </div>
+
+                <!-- CLIENT 4 -->
+                <div class="row-employe menus">
+                    <div class="col-left">Client 4<br><small>04/01/2026</small></div>
+                    <div class="col-center">Menu saisonnier<br><small>3 pers</small></div>
+                    <div class="col-center">60€<br><span class="actif">validé</span></div>
+                    <div class="col-right">
+                        <img src="/assets/pencil-square.svg" class="icon">
+                        <img src="/assets/trash3.svg" class="icon">
+                    </div>
+                </div>
+
             </div>
 
-            <div class="client-table__row client-table__row--title-secondary client-table__row--columns menus-columns">
-                <span>Client</span>
-                <span>Date</span>
-                <span>Menu</span>
-                <span>Nb. Pers.</span>
-                <span>Statut</span>
-                <span>Actions</span>
-            </div>
-
-            <div class="client-table__row client-table__row--light"></div>
-            <div class="client-table__row client-table__row--dark"></div>
-            <div class="client-table__row client-table__row--light"></div>
-            <div class="client-table__row client-table__row--dark"></div>
-            <div class="client-table__row client-table__row--light"></div>
-            <div class="client-table__row client-table__row--dark"></div>
-            <div class="client-table__row client-table__row--light"></div>
-            <div class="client-table__row client-table__row--dark"></div>
-            <div class="client-table__row client-table__row--light"></div>
-            <div class="client-table__row client-table__row--dark"></div>
-            <div class="client-table__row client-table__row--light"></div>
-            <div class="client-table__row client-table__row--dark"></div>
-            <div class="client-table__row client-table__row--light"></div>
-            <div class="client-table__row client-table__row--dark"></div>
-            </div>
-
+            <!-- ================= COMMANDES ================= -->
             <div class="client-table client-table--second">
-            <div class="client-table__row client-table__row--title-primary">
-                Commande en cours
+
+                <!-- TITRE -->
+                <div class="client-table__row client-table__row--title-primary">
+                    Commande en cours
+                </div>
+
+                <!-- CLIENT 1 -->
+                <div class="row-employe orders">
+                    <div class="col-left">Menu standard</div>
+                    <div class="col-center">01/01/2026</div>
+                    <div class="col-center">4 pers</div>
+                    <div class="col-center"><span class="actif">validé</span></div>
+                    <div class="col-right">
+                        <img src="/assets/pencil-square.svg" class="icon">
+                        <img src="/assets/trash3.svg" class="icon">
+                    </div>
+                </div>
+
+                <!-- CLIENT 2 -->
+                <div class="row-employe orders">
+                    <div class="col-left">Menu végétarien</div>
+                    <div class="col-center">02/01/2026</div>
+                    <div class="col-center">2 pers</div>
+                    <div class="col-center"><span class="actif">validé</span></div>
+                    <div class="col-right">
+                        <img src="/assets/pencil-square.svg" class="icon">
+                        <img src="/assets/trash3.svg" class="icon">
+                    </div>
+                </div>
+
+                <!-- CLIENT 3 -->
+                <div class="row-employe orders">
+                    <div class="col-left">Menu événement</div>
+                    <div class="col-center">03/01/2026</div>
+                    <div class="col-center">6 pers</div>
+                    <div class="col-center"><span class="inactif">en attente</span></div>
+                    <div class="col-right">
+                        <img src="/assets/pencil-square.svg" class="icon">
+                        <img src="/assets/trash3.svg" class="icon">
+                    </div>
+                </div>
+
             </div>
 
-            <div class="client-table__row client-table__row--title-secondary client-table__row--columns order-columns">
-                <span>Menu</span>
-                <span>Date</span>
-                <span>Nb pers.</span>
-                <span>Statut</span>
-                <span class="actions-label">
-                    
-                    <span class="label-short">Modif./Suppr.</span>
-                </span>
-            </div>
-
-            <div class="client-table__row client-table__row--light"></div>
-            <div class="client-table__row client-table__row--dark"></div>
-            <div class="client-table__row client-table__row--light"></div>
-            <div class="client-table__row client-table__row--dark"></div>
-            <div class="client-table__row client-table__row--light"></div>
-            <div class="client-table__row client-table__row--dark"></div>
-            </div>
         </section>
 
+        <!-- ================= IMAGES ================= -->
         <section class="shared-highlights">
+
             <div class="shared-highlights__image">
             <img src="/assets/images/chapeau-cuisine.jpg" alt="Équipe qualifiée">
             </div>
@@ -138,10 +188,10 @@
             <div class="shared-highlights__image">
             <img src="/assets/images/logo-faitmaison.jpg" alt="Fait maison">
             </div>
+
         </section>
 
-
-    </main>
+        </main>
 
 
 

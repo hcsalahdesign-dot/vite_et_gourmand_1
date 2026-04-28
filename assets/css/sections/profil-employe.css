@@ -1,3 +1,7 @@
+/* =========================================================
+   PAGE EMPLOYÉ
+========================================================= */
+
 body.page-employe-space {
   min-height: 100vh;
   display: flex;
@@ -9,20 +13,28 @@ body.page-employe-space {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: var(--collection-de-variables-hero-1);
 }
+
+/* =========================================================
+   SECTION
+========================================================= */
 
 .employe-space-section {
   flex: 1;
   width: 100%;
   min-height: 550px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+
   padding: 20px 40px 30px;
   box-sizing: border-box;
 }
+
+/* =========================================================
+   TITRE
+========================================================= */
 
 .employe-space-section h2 {
   margin: 0 0 40px 0;
@@ -33,19 +45,27 @@ body.page-employe-space {
   text-align: center;
 }
 
+/* =========================================================
+   TABLEAU
+========================================================= */
+
 .client-table {
-  width: 1000px;
+  width: 100%;
+  max-width: 1000px;
   margin-bottom: 20px;
   border-radius: 15px;
   overflow: hidden;
 }
+
+/* =========================================================
+   HEADERS
+========================================================= */
 
 .client-table__row {
   display: flex;
   align-items: center;
   padding: 0 20px;
   font-family: "Lato", sans-serif;
-  color: var(--collection-de-variables-footer-1);
 }
 
 .client-table__row--title-primary {
@@ -55,67 +75,171 @@ body.page-employe-space {
   font-size: 18px;
   font-weight: 700;
   justify-content: center;
-  text-align: center;
 }
 
 .client-table__row--title-secondary {
   height: 30px;
   background-color: var(--collection-de-variables-bouton-3);
   color: #ffffff;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
 }
 
-.client-table__row--light {
-  height: 20px;
-  background-color: var(--collection-de-variables-couleur-2-tableau);
+/* =========================================================
+   STRUCTURE LIGNES
+========================================================= */
+
+.row-employe {
+  display: flex;
+  height: 60px;
 }
 
-.client-table__row--dark {
-  height: 20px;
-  background-color: var(--collection-de-variables-couleur-3-tableau);
+/* alternance */
+.row-employe:nth-child(odd) {
+  background: #d9d9d9;
+}
+.row-employe:nth-child(even) {
+  background: #cfcfcf;
 }
 
-.client-table__row--columns span {
-  text-align: center;
+/* =========================================================
+   COLONNES
+========================================================= */
+
+.col-left {
+  width: 400px;
+
+  background: #617279;
+  color: #d9d9d9;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+
+  gap: 4px;
 }
+
+.col-center {
+  width: 400px;
+
+  display: flex;
+  flex-direction: column; /* base */
+
+  justify-content: center;
+  align-items: center;
+
+  font-size: 12px;
+  color: #3F535B;
+
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+
+  gap: 4px;
+}
+
+.col-right {
+  width: 200px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 40px;
+
+  border-bottom: 1px solid #fff;
+}
+
+/* =========================================================
+   🔥 CORRECTION MENUS (IMPORTANT)
+========================================================= */
+
+.menus .col-center {
+  flex-direction: row; /* ✅ horizontal */
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+/* blocs internes */
+.menus .center-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================================================
+   ICONES
+========================================================= */
+
+.icon {
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+/* =========================================================
+   STATUTS
+========================================================= */
+
+.actif {
+  color: green;
+  font-weight: bold;
+  font-size: 11px;
+}
+
+.inactif {
+  color: red;
+  font-weight: bold;
+  font-size: 11px;
+}
+
+/* =========================================================
+   HEADERS GRID
+========================================================= */
 
 .menus-columns {
   display: grid;
   grid-template-columns: 1.5fr 1.2fr 1.5fr 1fr 1fr 1.2fr;
-  align-items: center;
 }
 
 .order-columns {
   display: grid;
   grid-template-columns: 2fr 1.2fr 1fr 1fr 1.6fr;
-  align-items: center;
 }
 
+/* =========================================================
+   IMAGES
+========================================================= */
 
 .shared-highlights {
   width: 100%;
   height: 200px;
+
   background-color: var(--collection-de-variables-header-1);
+
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 350px;
+
+  gap: 120px;
   padding: 0 40px;
-  flex-shrink: 0;
 }
 
 .shared-highlights__image {
   width: 180px;
   height: 150px;
-  overflow: hidden;
 }
 
 .shared-highlights__image img {
   width: 100%;
   height: 100%;
-  display: block;
   object-fit: cover;
   border-radius: 15px;
 }
-
