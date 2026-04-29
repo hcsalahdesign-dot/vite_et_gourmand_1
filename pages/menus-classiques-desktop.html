@@ -18,6 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
   <script src="/assets/js/navigation.js" defer></script>
+  <script src="/assets/js/commande.js" defer></script>
 
   <title>Vite & Gourmand</title>
 </head>
@@ -63,6 +64,7 @@
               class="add-to-cart-button"
               type="button"
               data-menu="Poulet à la crème"
+              data-price="13.90"
               data-category="Classiques"
               aria-label="Ajouter Poulet à la crème à la commande">
               <img src="/assets/plus-circle-fill-grey.svg" alt="">
@@ -81,6 +83,7 @@
             class="add-to-cart-button"
             type="button"
             data-menu="Cabillaud à la provençale"
+            data-price="14.90"
             data-category="Classiques"
             aria-label="Ajouter Cabillaud à la provençale à la commande">
             <img src="/assets/plus-circle-fill-grey.svg" alt="">
@@ -96,15 +99,16 @@
           <div class="menu-page-card__image">
            
             <img src="/assets/images/Images menus/Classiques/Ragout de bœuf.jpg" alt="Ragoût de bœuf">
-          
-          <button
-            class="add-to-cart-button"
-            type="button"
-            data-menu="Ragoût de bœuf"
-            data-category="Classiques"
-           aria-label="Ajouter Ragoût de bœuf à la commande">
-            <img src="/assets/plus-circle-fill-grey.svg" alt="">
-          </button>
+            
+            <button
+              class="add-to-cart-button"
+              type="button"
+              data-menu="Ragoût de bœuf"
+              data-price="12.90"
+              data-category="Classiques"
+              aria-label="Ajouter Ragoût de bœuf à la commande">
+              <img src="/assets/plus-circle-fill-grey.svg" alt="">
+            </button>
 
           </div>
           
@@ -121,6 +125,7 @@
             class="add-to-cart-button"
             type="button"
             data-menu="Poulet à la moutarde"
+            data-price="13.90"
             data-category="Classiques"
             aria-label="Ajouter Poulet à la moutarde à la commande">
             <img src="/assets/plus-circle-fill-grey.svg" alt="">
@@ -132,6 +137,25 @@
       </div>
 
     </section>
+
+    <div id="menuModal" style="display:none;">
+      <div class="modal-box">
+
+        <h3 id="modalNom"></h3>
+        <p>Prix : <span id="modalPrix"></span> €</p>
+
+        <label>Quantité :</label>
+        <input type="number" id="modalQuantite" value="1" min="1">
+
+        <p>Total : <span id="modalTotal"></span> €</p>
+
+        <button onclick="ajouterDepuisModal()">Ajouter au panier</button>
+        <button onclick="fermerModal()">Fermer</button>
+
+      </div>
+    </div>
+
+    
   </main>
 
   <footer class="footer">
