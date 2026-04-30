@@ -10,13 +10,14 @@
   <link rel="stylesheet" href="/assets/css/sections/menu-type.css">
   <link rel="stylesheet" href="/assets/css/sections/menus-saisonniers-responsive.css">
 
-  <script src="/assets/js/navigation.js" defer></script>
-  <script src="/assets/js/commande.js" defer></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
+  <script src="/assets/js/navigation.js" defer></script>
+  <script src="/assets/js/auth.js" defer></script>
+  <script src="/assets/js/commande.js" defer></script>
 
 
   <title>Vite & Gourmand</title>
@@ -62,6 +63,7 @@
             class="add-to-cart-button"
             type="button"
             data-menu="Saumon printanier"
+            data-price="18.90"
             data-category="Saisonniers"
            aria-label="Ajouter Saumon printanier à la commande">
             <img src="/assets/plus-circle-fill-grey.svg" alt="">
@@ -81,6 +83,7 @@
             class="add-to-cart-button"
             type="button"
             data-menu="Escalope d’automne"
+            data-price="16.90"
             data-category="Saisonniers"
            aria-label="Ajouter Escalope d’automne à la commande">
             <img src="/assets/plus-circle-fill-grey.svg" alt="">
@@ -100,6 +103,7 @@
             class="add-to-cart-button"
             type="button"
             data-menu="Poisson à la moutarde"
+            data-price="14.90"
             data-category="Saisonniers"
             aria-label="Ajouter Poisson à la moutarde à la commande">
             <img src="/assets/plus-circle-fill-grey.svg" alt="">
@@ -118,8 +122,9 @@
             class="add-to-cart-button"
             type="button"
             data-menu="Rôti aux légumes"
+            data-price="17.90"
             data-category="Saisonniers"
-           aria-label="Ajouter Rôti aux légumes à la commande">
+            aria-label="Ajouter Rôti aux légumes à la commande">
             <img src="/assets/plus-circle-fill-grey.svg" alt="">
           </button>
           
@@ -127,6 +132,24 @@
         </article>
       </div>
     </section>
+
+    <div id="menuModal" style="display:none;">
+      <div class="modal-box">
+
+        <h3 id="modalNom"></h3>
+        <p>Prix : <span id="modalPrix"></span> €</p>
+
+        <label>Quantité :</label>
+        <input type="number" id="modalQuantite" value="1" min="1">
+
+        <p>Total : <span id="modalTotal"></span> €</p>
+
+        <button onclick="ajouterDepuisModal()">Ajouter au panier</button>
+        <button onclick="fermerModal()">Fermer</button>
+
+      </div>
+    </div>
+
   </main>
 
   <footer class="footer">

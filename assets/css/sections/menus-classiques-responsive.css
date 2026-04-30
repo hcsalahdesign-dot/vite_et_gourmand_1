@@ -99,7 +99,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 50px;
     margin-top: 20px;
   }
 
@@ -112,7 +112,7 @@ body {
 
   .menu-page-card p {
     margin: 0 0 15px 0;
-    font-size: 18px;
+    font-size: 16px;
     white-space: normal;
     text-align: center;
   }
@@ -136,4 +136,12 @@ body {
     font-size: 10px;
     text-align: center;
   }
+
+  .menu-price {
+    font-size: 16px;
+    display: inline;
+    margin-top: 5px;
+  }
+
+
 }

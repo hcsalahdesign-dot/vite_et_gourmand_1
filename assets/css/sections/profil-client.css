@@ -55,10 +55,12 @@ body.page-client {
 .client-table {
   width: 100%;
   max-width: 1000px;
-  margin-bottom: 40px;
   border-radius: 15px;
   overflow: hidden;
   
+}
+.client-table.client-table--second {
+  margin-top: 40px;
 }
 
 /* header */
@@ -176,6 +178,67 @@ body.page-client {
   font-weight: bold;
   font-size: 12px;
 }
+
+.container-valider {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.commande-ok {
+  animation: flash 0.8s ease;
+}
+
+@keyframes flash {
+  0% { background-color: transparent; }
+  50% { background-color: rgba(217, 86, 5, 0.2); }
+  100% { background-color: transparent; }
+}
+
+.panier-footer {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  gap: 25px;
+  padding: 25px;
+}
+
+/* 🔥 CASE GRIS DU TOTAL */
+.panier-total-box {
+  background: #cfcfcf; /* même esprit que ton tableau */
+  padding: 10px 20px;
+  border-radius: 5px;
+  min-width: 180px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: #ffffff 1px solid;
+  border-top: #ffffff 1px solid;
+}
+
+.panier-total {
+  font-weight: bold;
+  font-size: 16px;
+  color: #3F535B;
+}
+
+/* BOUTON */
+.btn-valider {
+  padding: 10px 18px;
+  background-color : var(--collection-de-variables-header-CTA-1);
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
 
 /* =========================================================
    IMAGES

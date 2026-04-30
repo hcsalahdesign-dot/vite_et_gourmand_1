@@ -15,6 +15,7 @@
 
   <script src="/assets/js/navigation.js" defer></script>
   <script src="/assets/js/auth.js" defer></script>
+  <script src="/assets/js/client.js" defer></script>
 
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,100 +76,42 @@
       <section class="client-section">
             <h2>Espace Client</h2>
 
-            <div class="client-table client-table--first">
+                <!-- 🛒 PANIER -->
+                <div class="client-table client-table--first">
 
-              <div class="client-table client-table--first">
-
-                <div class="client-table__row client-table__row--title-primary">
+                    <div class="client-table__row client-table__row--title-primary">
                     Votre panier
+                    </div>
+
+                    <!-- CONTENU DYNAMIQUE JS -->
+                    <div id="clientCart"></div>
+
+                    
                 </div>
 
-                <div class="row-employe">
+               <!-- FOOTER PANIER -->
+                <div class="panier-footer">
 
-                    <div class="col-left">
-                    Menu classique<br>
-                    <small>12/04/2026</small>
+                    <div class="panier-total-box">
+                        <div id="totalPanier" class="panier-total"></div>
                     </div>
 
-                    <div class="col-center">
-                    Poulet à la crème
-                    </div>
-
-                    <div class="col-center">
-                    4 pers<br>
-                    <span class="actif">en attente</span>
-                    </div>
-
-                    <div class="col-center">
-                    51.6€
-                    </div>
-
-                    <div class="col-right">
-                    <img src="/assets/pencil-square.svg" class="icon">
-                    <img src="/assets/trash3.svg" class="icon">
-                    </div>
+                    <button id="btnValider" class="btn-valider">
+                        Valider la commande
+                    </button>
 
                 </div>
 
-                </div>
 
+            <!-- 📦 COMMANDES EN COURS -->
             <div class="client-table client-table--second">
 
                 <div class="client-table__row client-table__row--title-primary">
-                    Commande en cours
+                Commande en cours
                 </div>
 
-                <div class="row-employe">
-
-                    <div class="col-left">
-                    Menu végétarien<br>
-                    <small>14/04/2026</small>
-                    </div>
-
-                    <div class="col-center">
-                    Pavé de légumes proteiné
-                    </div>
-
-                    <div class="col-center">
-                    2 pers<br>
-                    <span class="actif">validé</span>
-                    </div>
-
-                    <div class="col-center">
-                    37€80
-                    </div>
-
-                    <div class="col-right">
-                    <img src="/assets/eye.svg" class="icon">
-                    </div>
-
-                </div>
-
-                <div class="row-employe">
-
-                    <div class="col-left">
-                    Menu Classique<br>
-                    <small>14/04/2026</small>
-                    </div>
-
-                    <div class="col-center">
-                    Ragout de boeuf
-                    </div>
-
-                    <div class="col-center">
-                    5 pers<br>
-                    <span class="actif">validé</span>
-                    </div>
-
-                    <div class="col-center">
-                    64€50
-                    </div>
-
-                    <div class="col-right">
-                    <img src="/assets/eye.svg" class="icon">
-                    </div>
-
-                </div>
+                <!-- CONTENU DYNAMIQUE JS -->
+                <div id="clientOrders"></div>
 
             </div>
 

@@ -11,14 +11,15 @@
   <link rel="stylesheet" href="/assets/css/sections/menu-type.css">
   <link rel="stylesheet" href="/assets/css/sections/menus-vegetariens-responsive.css">
 
-  <script src="/assets/js/navigation.js" defer></script>
-  <script src="/assets/js/commande.js" defer></script>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
-  
+
+  <script src="/assets/js/navigation.js" defer></script>
+  <script src="/assets/js/auth.js" defer></script>
+  <script src="/assets/js/commande.js" defer></script>
 
   <title>Vite & Gourmand</title>
 </head>
@@ -65,6 +66,7 @@
                   class="add-to-cart-button"
                   type="button"
                   data-menu="Assiette crudités"
+                  data-price="12.90"
                   data-category="Végétariens"
                   aria-label="Ajouter Assiette crudités à la commande">
                   <img src="/assets/plus-circle-fill-grey.svg" alt="">
@@ -85,6 +87,7 @@
                   class="add-to-cart-button"
                   type="button"
                   data-menu="Raviolis aux légumes"
+                  data-price="14.90"
                   data-category="Végétariens"
                   aria-label="Ajouter Raviolis aux légumes à la commande">
                   <img src="/assets/plus-circle-fill-grey.svg" alt="">
@@ -105,6 +108,7 @@
                   class="add-to-cart-button"
                   type="button"
                   data-menu="Pavé de légumes proteiné"
+                  data-price="18.90"
                   data-category="Végétariens"
                   aria-label="Ajouter Pavé de légumes proteiné à la commande">
                   <img src="/assets/plus-circle-fill-grey.svg" alt="">
@@ -125,6 +129,7 @@
                   class="add-to-cart-button"
                   type="button"
                   data-menu="Soupe de potimarron"
+                  data-price="12.90"
                   data-category="Végétariens"
                   aria-label="Ajouter Soupe de potimarron à la commande">
                   <img src="/assets/plus-circle-fill-grey.svg" alt="">
@@ -135,6 +140,25 @@
             </article>
             </div>
         </section>
+
+        <div id="menuModal" style="display:none;">
+          <div class="modal-box">
+
+            <h3 id="modalNom"></h3>
+            <p>Prix : <span id="modalPrix"></span> €</p>
+
+            <label>Quantité :</label>
+            <input type="number" id="modalQuantite" value="1" min="1">
+
+            <p>Total : <span id="modalTotal"></span> €</p>
+
+            <button onclick="ajouterDepuisModal()">Ajouter au panier</button>
+            <button onclick="fermerModal()">Fermer</button>
+
+          </div>
+        </div>
+
+
   </main>
 
 

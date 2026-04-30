@@ -1,5 +1,12 @@
 console.log("auth.js chargé");
 
+
+function estConnecte() {
+  return localStorage.getItem("user") !== null;
+}
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
 
   // =========================
