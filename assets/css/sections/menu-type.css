@@ -201,7 +201,80 @@
   background: var(--collection-de-variables-header-1);
   color: var(--collection-de-variables-footer-1);
   
-
-  
 }
+
+.confirmation-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 2000;
+}
+
+.confirmation-modal.open {
+  display: flex;
+}
+
+.confirmation-modal__box {
+  width: 500px;
+  padding: 50px;
+  border-radius: 16px;
+  background-color: var(--collection-de-variables-hero-1);
+  text-align: center;
+  color: #522404;
+}
+
+.confirmation-modal__actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  margin-top: 50px;
+}
+
+.confirmation-modal__actions button {
+  width: 100%;
+  max-width: 170px;
+  height: 32px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--collection-de-variables-header-1);
+  color: var(--couleur-texte-tableaux-profils);
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirmation-modal__box p {
+  margin: 0;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-family: lato, sans-serif;
+  font-weight: 700;
+  color: var(--couleur-texte-tableaux-profils);
+  text-align: center;
+}
+
+.modal-box p,
+.modal-box label {
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--couleur-texte-tableaux-profils);
+}
+
+.modal-box h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+
 

@@ -26,28 +26,45 @@
 
 <body class="page-menu-detail">
 
-   <header class="header">
-    <nav class="header__nav">
-      <div class="titre-connexion">
-        <h1 class="vite-gourmand">Vite &amp; Gourmand</h1>
+     <header class="header">
+        <nav class="header__nav">
+            <div class="titre-connexion">
+            <h1 class="vite-gourmand">
+                Vite &amp; Gourmand
+            </h1>
 
-        <button class="bouton-mon-compte d-flex align-items-center" data-nav="connexion">
-          <img src="/assets/person-circle.svg" alt="Utilisateur" class="user me-2">
-          <span>Déconnexion</span>
-        </button>
+            <div class="header-actions">
+                <button class="bouton-panier" id="cartButton" type="button" data-nav="profilClient" style="display: none;">
+                    <img src="/assets/cart2.svg" alt="Panier" class="cart2 ">
+                    <span>Aller au panier</span>
+                </button>
 
-        <div class="nav__mobile-menu">
-          <img src="/assets/menu-burger.svg" alt="menu-burger">
-        </div>
-      </div>
+                <button class="bouton-mon-compte d-flex align-items-center" data-nav="connexion">
+                <img src="/assets/person-circle.svg" alt="Utilisateur" class="user me-2">
+                <span>Mon compte/s’inscrire</span>
+                </button>
+            </div>
 
-      <div class="liens-navigation">
-        <div class="div-wrapper"><div class="div" data-nav="accueil">Accueil</div></div>
-        <div class="div-wrapper"><div class="div" data-nav="menus">Menu</div></div>
-        <div class="div-wrapper"><div class="div" data-nav="contact">Contact</div></div>
-      </div>
-    </nav>
-  </header>
+            <div class="nav__mobile-menu">
+                <img src="/assets/menu-burger.svg" alt="menu-burger">
+            </div>
+            </div>
+
+            <div class="liens-navigation">
+            <div class="div-wrapper">
+                <div class="div" data-nav="accueil">Accueil</div>
+            </div>
+
+            <div class="div-wrapper">
+                <div class="div" data-nav="menus">Menu</div>
+            </div>
+
+            <div class="div-wrapper">
+                <div class="div" data-nav="contact">Contact</div>
+            </div>
+            </div>
+        </nav>
+    </header>
 
   <main class="page-main">
         <section class="menu-page-section">
@@ -156,6 +173,18 @@
             <button onclick="fermerModal()">Fermer</button>
 
           </div>
+        </div>
+
+        <div class="confirmation-modal" id="confirmationModal">
+          <div class="confirmation-modal__box">
+            <p>Produit ajouté au panier</p>
+
+            <div class="confirmation-modal__actions">
+              <button type="button" id="continueShoppingButton">Continuer mes achats</button>
+              <button type="button" id="goToCartButton">Aller au panier</button>
+            </div>
+          </div>
+
         </div>
 
 

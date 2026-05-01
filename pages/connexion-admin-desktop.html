@@ -10,6 +10,7 @@
 
 
   <script src="/assets/js/navigation.js" defer></script>
+  <script src="/assets/js/auth.js" defer></script>
 
   
   <link rel="stylesheet" href="/assets/css/sections/css-auth/connexion-admin.css">
@@ -23,48 +24,45 @@
 </head>
 
 <body class="page-admin">
-  <header class="header">
+    <header class="header">
         <nav class="header__nav">
-        
             <div class="titre-connexion">
-                
-                <h1 class="vite-gourmand">
-                    Vite &amp; Gourmand
-                </h1>
+            <h1 class="vite-gourmand">
+                Vite &amp; Gourmand
+            </h1>
 
-                <button class="bouton-mon-compte d-flex align-items-center" data-nav="connexion">
-
-                    <img src="/assets/person-circle.svg" alt="Utilisateur" class="user me-2">
-                    <span>Mon compte/s’inscrire</span>
-                    
+            <div class="header-actions">
+                <button class="bouton-panier" id="cartButton" type="button" data-nav="profilClient" style="display: none;">
+                    <img src="/assets/cart2.svg" alt="Panier" class="cart2 ">
+                    <span>Aller au panier</span>
                 </button>
 
+                <button class="bouton-mon-compte d-flex align-items-center" data-nav="connexion">
+                <img src="/assets/person-circle.svg" alt="Utilisateur" class="user me-2">
+                <span>Mon compte/s’inscrire</span>
+                </button>
+            </div>
 
-                <div class="nav__mobile-menu">
-                    <img src="/assets/menu-burger.svg" alt="menu-burger">
-                </div>
-
+            <div class="nav__mobile-menu">
+                <img src="/assets/menu-burger.svg" alt="menu-burger">
+            </div>
             </div>
 
             <div class="liens-navigation">
-
-                
-                <div class="div-wrapper">
-                    <div class="div" data-nav="accueil">Accueil</div>
-                </div>
-
-                <div class="div-wrapper">
-                    <div class="div" data-nav="menus">Menu</div>
-                </div>
-
-                <div class="div-wrapper">
-                    <div class="div" data-nav="contact">Contact</div>
-                </div>
-
+            <div class="div-wrapper">
+                <div class="div" data-nav="accueil">Accueil</div>
             </div>
 
+            <div class="div-wrapper">
+                <div class="div" data-nav="menus">Menu</div>
+            </div>
+
+            <div class="div-wrapper">
+                <div class="div" data-nav="contact">Contact</div>
+            </div>
+            </div>
         </nav>
-  </header>
+    </header>
 
 
   <main class="page-main">

@@ -1,13 +1,63 @@
 console.log("auth.js chargé");
 
-
 function estConnecte() {
-  return localStorage.getItem("user") !== null;
+  return localStorage.getItem("currentUser") !== null;
 }
 
+function updateHeaderAuthState() {
+  const accountButton = document.querySelector(".bouton-mon-compte");
+  const cartButton = document.getElementById("cartButton");
+  if (!accountButton) return;
 
+  const label = accountButton.querySelector("span");
+  const user = JSON.parse(localStorage.getItem("currentUser"));
+
+  if (!label) return;
+
+  if (!user) {
+    label.textContent = "Mon compte/s’inscrire";
+    accountButton.setAttribute("data-nav", "connexion");
+    if (cartButton) cartButton.style.display = "none";
+    return;
+  }
+
+  label.textContent = "Déconnexion";
+  accountButton.removeAttribute("data-nav");
+
+  if (user.role === "client") {
+    if (cartButton) {
+      cartButton.style.display = "inline-flex";
+      cartButton.setAttribute("data-nav", "profilClient");
+    }
+    return;
+  }
+
+  if (user.role === "admin") {
+    if (cartButton) cartButton.style.display = "none";
+    return;
+  }
+
+  if (user.role === "employe") {
+    if (cartButton) cartButton.style.display = "none";
+  }
+}
+
+function logout() {
+  localStorage.removeItem("currentUser");
+  window.location.href = "/index.html";
+}
 
 document.addEventListener("DOMContentLoaded", () => {
+  updateHeaderAuthState();
+
+  const accountButton = document.querySelector(".bouton-mon-compte");
+  if (accountButton) {
+    accountButton.addEventListener("click", () => {
+      if (estConnecte()) {
+        logout();
+      }
+    });
+  }
 
   // =========================
   // INITIALISATION USERS
@@ -28,8 +78,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   ];
 
-  defaultUsers.forEach(defaultUser => {
-    const exists = users.find(u => u.email === defaultUser.email);
+  defaultUsers.forEach((defaultUser) => {
+    const exists = users.find((u) => u.email === defaultUser.email);
     if (!exists) users.push(defaultUser);
   });
 
@@ -51,11 +101,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // REGISTER
   // =========================
 
-  window.register = function(email, password, role = "client") {
-
+  window.register = function (email, password, role = "client") {
     let users = getUsers();
 
-    const exists = users.find(u => u.email === email);
+    const exists = users.find((u) => u.email === email);
 
     if (exists) {
       alert("Compte déjà existant");
@@ -73,11 +122,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // LOGIN
   // =========================
 
-  window.login = function(email, password) {
-
+  window.login = function (email, password) {
     let users = getUsers();
 
-    const user = users.find(u => u.email === email && u.password === password);
+    const user = users.find((u) => u.email === email && u.password === password);
 
     if (!user) {
       alert("Identifiants incorrects");
@@ -86,9 +134,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     localStorage.setItem("currentUser", JSON.stringify(user));
 
-    alert("Connexion réussie");
+    updateHeaderAuthState();
 
-    redirectByRole(user);
+    //*alert("Connexion réussie"); si besoin de debug.
+
+    const redirectAfterLogin = localStorage.getItem("redirectAfterLogin");
+
+    if (redirectAfterLogin) {
+      localStorage.removeItem("redirectAfterLogin");
+      window.location.href = redirectAfterLogin;
+    } else {
+      redirectByRole(user);
+    }
   };
 
   // =========================
@@ -96,7 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // =========================
 
   function redirectByRole(user) {
-
     const routes = {
       client: "/pages/profil-client-desktop.html",
       admin: "/pages/profil-admin-desktop.html",
@@ -111,14 +167,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // =========================
 
   function protectPage() {
-
     const user = JSON.parse(localStorage.getItem("currentUser"));
 
-    const protectedPages = [
-      "/pages/profil-client-desktop.html",
-      "/pages/profil-admin-desktop.html",
-      "/pages/profil-employe-desktop.html"
-    ];
+   const protectedPages = [
+  "/pages/profil-admin-desktop.html",
+  "/pages/profil-employe-desktop.html"
+  ];
+
 
     const currentPage = window.location.pathname;
 
@@ -178,61 +233,56 @@ document.addEventListener("DOMContentLoaded", () => {
   // =========================
 
   function renderEmployees() {
+    const users = getUsers();
+    const employees = users.filter((u) => u.role === "employe");
 
-  const users = getUsers();
-  const employees = users.filter(u => u.role === "employe");
+    const container = document.getElementById("employeesContainer");
+    if (!container) return;
 
-  const container = document.getElementById("employeesContainer");
-  if (!container) return;
+    container.innerHTML = "";
 
-  container.innerHTML = "";
+    const MIN_ROWS = 8;
+    const data = [...employees];
 
-  const MIN_ROWS = 8; // 👈 nombre de lignes visuelles minimum
-
-  const data = [...employees];
-
-  // compléter avec des lignes vides si besoin
-  while (data.length < MIN_ROWS) {
-    data.push(null);
-  }
-
-  data.forEach((emp, index) => {
-
-    const row = document.createElement("div");
-
-    row.classList.add("client-table__row");
-
-    row.classList.add(
-      index % 2 === 0
-        ? "client-table__row--light"
-        : "client-table__row--dark"
-    );
-
-    if (emp) {
-      row.innerHTML = `
-        <span>${emp.email.split("@")[0]}</span>
-        <span>${emp.email}</span>
-        <span>${emp.role}</span>
-        <span>Actif</span>
-        <span class="actions">
-          <button class="icon-btn edit">✏️</button>
-          <button class="icon-btn delete">🗑️</button>
-        </span>
-      `;
-    } else {
-      row.innerHTML = `
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      `;
-      row.style.opacity = "1"; //  visuel léger
+    while (data.length < MIN_ROWS) {
+      data.push(null);
     }
 
-    container.appendChild(row);
-  });
-}
+    data.forEach((emp, index) => {
+      const row = document.createElement("div");
+
+      row.classList.add("client-table__row");
+      row.classList.add(
+        index % 2 === 0
+          ? "client-table__row--light"
+          : "client-table__row--dark"
+      );
+
+      if (emp) {
+        row.innerHTML = `
+          <span>${emp.email.split("@")[0]}</span>
+          <span>${emp.email}</span>
+          <span>${emp.role}</span>
+          <span>Actif</span>
+          <span class="actions">
+            <button class="icon-btn edit">✏️</button>
+            <button class="icon-btn delete">🗑️</button>
+          </span>
+        `;
+      } else {
+        row.innerHTML = `
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        `;
+        row.style.opacity = "1";
+      }
+
+      container.appendChild(row);
+    });
+  }
 
   // =========================
   // INIT ADMIN PANEL
@@ -243,5 +293,4 @@ document.addEventListener("DOMContentLoaded", () => {
   if (user && user.role === "admin") {
     renderEmployees();
   }
-
 });

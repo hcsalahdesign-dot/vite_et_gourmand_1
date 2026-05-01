@@ -11,42 +11,57 @@
   <link rel="stylesheet" href="/assets/css/sections/css-auth/inscription.css">
   <link rel="stylesheet" href="/assets/css/sections/css-auth/inscription-responsive.css">
 
-  <script src="/assets/js/navigation.js" defer></script>
-  <script src="/assets/js/auth.js" defer></script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
   <script src="/assets/js/navigation.js" defer></script>
+  <script src="/assets/js/auth.js" defer></script>
 
   <title>Vite & Gourmand</title>
 </head>
 
 <body class="page-signup">
 
-  <header class="header">
-    <nav class="header__nav">
-      <div class="titre-connexion">
-        <h1 class="vite-gourmand">Vite &amp; Gourmand</h1>
+   <header class="header">
+        <nav class="header__nav">
+            <div class="titre-connexion">
+            <h1 class="vite-gourmand">
+                Vite &amp; Gourmand
+            </h1>
 
-        <button class="bouton-mon-compte d-flex align-items-center" data-nav="connexion">
-          <img src="/assets/person-circle.svg" alt="Utilisateur" class="user me-2">
-          <span>Mon compte/s’inscrire</span>
-        </button>
+            <div class="header-actions">
+                <button class="bouton-panier" id="cartButton" type="button" data-nav="profilClient" style="display: none;">
+                    <img src="/assets/cart2.svg" alt="Panier" class="cart2 ">
+                    <span>Aller au panier</span>
+                </button>
 
-        <div class="nav__mobile-menu">
-          <img src="/assets/menu-burger.svg" alt="menu-burger">
-        </div>
-      </div>
+                <button class="bouton-mon-compte d-flex align-items-center" data-nav="connexion">
+                <img src="/assets/person-circle.svg" alt="Utilisateur" class="user me-2">
+                <span>Mon compte/s’inscrire</span>
+                </button>
+            </div>
 
-      <div class="liens-navigation">
-        <div class="div-wrapper"><div class="div" data-nav="accueil">Accueil</div></div>
-        <div class="div-wrapper"><div class="div" data-nav="menus">Menu</div></div>
-        <div class="div-wrapper"><div class="div" data-nav="contact">Contact</div></div>
-      </div>
-    </nav>
-  </header>
+            <div class="nav__mobile-menu">
+                <img src="/assets/menu-burger.svg" alt="menu-burger">
+            </div>
+            </div>
+
+            <div class="liens-navigation">
+            <div class="div-wrapper">
+                <div class="div" data-nav="accueil">Accueil</div>
+            </div>
+
+            <div class="div-wrapper">
+                <div class="div" data-nav="menus">Menu</div>
+            </div>
+
+            <div class="div-wrapper">
+                <div class="div" data-nav="contact">Contact</div>
+            </div>
+            </div>
+        </nav>
+    </header>
 
   <main class="page-main">
       <section class="signup-section">
