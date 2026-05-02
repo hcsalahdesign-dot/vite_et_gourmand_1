@@ -18,7 +18,7 @@
 
   <script src="/assets/js/navigation.js" defer></script>
   <script src="/assets/js/auth.js" defer></script>
-  <script src="/assets/js/client.js" defer></script>
+  <script src="/assets/js/employe.js" defer></script>
 
   <title>Vite & Gourmand</title>
 </head>
@@ -70,60 +70,11 @@
         <section class="employe-space-section">
             <h2>Espace Employé</h2>
 
- <!-- ================= COMMANDES ================= -->
-            <div class="client-table client-table--second">
-
-                <!-- TITRE -->
-                <div class="client-table__row client-table__row--title-primary">
-                    Commande en cours
-                </div>
-
-                <!-- CLIENT 1 -->
-                <div class="row-employe orders">
-                    <div class="col-left">Menu Classique</div>
-                    <div class="col-center">Poulet à la crème</div>
-                    <div class="col-center">01/01/2026 - 10 personnes</div>
-                    <div class="col-center total">139€</div>
-                    <div class="col-center"><span class="actif">validé</span></div>
-                    <div class="col-right">
-                        <img src="/assets/pencil-square.svg" class="icon">
-                        <img src="/assets/trash3.svg" class="icon">
-                    </div>
-                </div>
-
-                <!-- CLIENT 2 -->
-                <div class="row-employe orders">
-                    <div class="col-left">Menu végétarien</div>
-                    <div class="col-center">Pavé de légumes proteiné</div>
-                    <div class="col-center">02/01/2026 - 8 personnes</div>
-                    <div class="col-center total">151€20</div>
-                    <div class="col-center"><span class="actif">validé</span></div>
-                    <div class="col-right">
-                        <img src="/assets/pencil-square.svg" class="icon">
-                        <img src="/assets/trash3.svg" class="icon">
-                    </div>
-                </div>
-
-                <!-- CLIENT 3 -->
-                <div class="row-employe orders">
-                    <div class="col-left">Menu événement</div>
-                    <div class="col-center">Classique Entreprise</div>
-                    <div class="col-center">03/01/2026 - 26 personnes</div>
-                    <div class="col-center total">439€40</div>
-                    <div class="col-center"><span class="inactif">en attente</span></div>
-                    <div class="col-right">
-                        <img src="/assets/pencil-square.svg" class="icon">
-                        <img src="/assets/trash3.svg" class="icon">
-                    </div>
-                </div>
-
-            </div>
-
-
+ 
             <!-- ================= MENU ================= -->
             <div class="block menus">
 
-                    <div class="block-header">Gestion des menus</div>
+                    <div class="block-header">Menus disponnibles</div>
 
                         <!-- MENU-TYPE 1 -->
                         <div class="row-menus">
@@ -300,6 +251,19 @@
                     </div>
 
                 </div>
+
+                <!-- ================= COMMANDES ================= -->
+            <div class="client-table client-table--second">
+
+               
+                    <div class="client-table__row client-table__row--title-primary">
+                        Commandes en cours
+                    </div>
+
+                    <div id="employeeOrdersContainer"></div>
+
+
+            </div>
 
            
         </section>
