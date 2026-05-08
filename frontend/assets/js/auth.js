@@ -1,15 +1,3 @@
-// SIMULATION CONNEXION (À mettre au début du script)
-if (!localStorage.getItem("currentUser")) {
-    const john = {
-        id: 1,
-        nom: "John Test",
-        email: "john@test.com",
-        role: "client"
-    };
-    localStorage.setItem("currentUser", JSON.stringify(john));
-    localStorage.setItem("user_id", 1); // Pour ton futur test PHP
-}
-
 
 console.log("auth.js chargé");
 
@@ -57,7 +45,10 @@ function updateHeaderAuthState() {
 
 function logout() {
   localStorage.removeItem("currentUser");
-  window.location.href = "/index.html";
+  localStorage.removeItem("user_id");
+
+  // redirection propre Docker
+  window.location.href = "/";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -135,40 +126,30 @@ document.addEventListener("DOMContentLoaded", () => {
   // LOGIN
   // =========================
 
-  window.login = async function (email, password) {
-    let users = getUsers();
-    const user = users.find((u) => u.email === email && u.password === password);
+ window.login = async function (email, password) {
+  try {
+    const response = await fetch("/backend/api/login.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password })
+    });
 
-    if (!user) {
-        alert("Identifiants incorrects");
-        return;
+    const result = await response.json();
+
+    if (!result.success) {
+      alert("Identifiants incorrects");
+      return;
     }
 
-    // --- AJOUT POUR LE BACK-END ---
-    try {
-        // On demande au PHP de nous donner l'ID de cet utilisateur
-        const response = await fetch(`/backend/api/get_user_id.php?email=${email}`);
-        const data = await response.json();
-        
-        if (data.success) {
-            user.id = data.id; // On injecte l'ID SQL dans l'objet utilisateur local
-        }
-    } catch (e) {
-        console.error("Impossible de récupérer l'ID SQL", e);
-    }
-    // ------------------------------
+    localStorage.setItem("currentUser", JSON.stringify(result.user));
 
-    localStorage.setItem("currentUser", JSON.stringify(user));
-    updateHeaderAuthState();
+    redirectByRole(result.user);
 
-    const redirectAfterLogin = localStorage.getItem("redirectAfterLogin");
-    if (redirectAfterLogin) {
-        localStorage.removeItem("redirectAfterLogin");
-        window.location.href = redirectAfterLogin;
-    } else {
-        redirectByRole(user);
-    }
-  };
+  } catch (error) {
+    console.error(error);
+    alert("Erreur serveur");
+  }
+};
 
   // =========================
   // REDIRECTION PAR RÔLE

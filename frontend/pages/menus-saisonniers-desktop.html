@@ -172,11 +172,23 @@
         <p>Produit ajouté au panier</p>
 
         <div class="confirmation-modal__actions">
-          <button type="button" id="continueShoppingButton">Continuer mes achats</button>
-          <button type="button" id="goToCartButton">Aller au panier</button>
+          <button
+            type="button"
+            id="continueShoppingButton"
+            onclick="document.getElementById('confirmationModal').classList.remove('open')">
+            Continuer mes achats
+          </button>
+
+          <button
+            type="button"
+            id="goToCartButton"
+            onclick="window.location.href='/pages/profil-client-desktop.html'">
+            Aller au panier
+          </button>
         </div>
       </div>
     </div>
+
 
   </main>
 

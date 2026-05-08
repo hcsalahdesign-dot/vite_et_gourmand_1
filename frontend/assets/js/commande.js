@@ -1,42 +1,46 @@
-console.log("commande.js chargé - Mode Hybride BDD activé");
+console.log("commande.js chargé");
 
 // =========================================================
-// PANIER GLOBAL
+// OUTILS
 // =========================================================
-let currentUser = JSON.parse(localStorage.getItem("currentUser"));
-let panier = JSON.parse(
-  localStorage.getItem("panier_" + (currentUser?.email || "guest"))
-) || [];
 
+function getCurrentUser() {
+  return JSON.parse(localStorage.getItem("currentUser"));
+}
+
+function getPanierKey() {
+  const user = getCurrentUser();
+  return "panier_" + (user?.email || "guest");
+}
+
+let panier = JSON.parse(localStorage.getItem(getPanierKey())) || [];
 let menuActuel = null;
 
 // =========================================================
-// AJOUT AU PANIER
+// PANIER
 // =========================================================
+
 function ajouterAuPanier(item) {
-  // On vérifie par l'ID numérique maintenant
-  let existant = panier.find((p) => p.id === item.id);
+  const existant = panier.find((p) => p.id === item.id);
 
   if (existant) {
     existant.quantite += item.quantite;
     existant.total = existant.quantite * existant.prix;
   } else {
     panier.push({
-      id: item.id,      // L'ID numérique (1, 2, 3...)
-      nom: item.nom,    // Le nom pour l'affichage
+      id: item.id,
+      nom: item.nom,
       prix: item.prix,
       quantite: item.quantite,
       total: item.prix * item.quantite
     });
   }
+
   sauvegarderPanier();
 }
 
 function sauvegarderPanier() {
-  localStorage.setItem(
-    "panier_" + (currentUser?.email || "guest"),
-    JSON.stringify(panier)
-  );
+  localStorage.setItem(getPanierKey(), JSON.stringify(panier));
 }
 
 function calculerTotal() {
@@ -44,103 +48,120 @@ function calculerTotal() {
 }
 
 // =========================================================
-// VALIDATION COMMANDE (VERS PHP/MYSQL)
+// MODALE MENU
 // =========================================================
-async function validerCommande() {
-  if (!currentUser) {
-    alert("Veuillez vous connecter pour commander");
-    window.location.href = "/pages/connexion-desktop.html";
-    return;
-  }
-
-  if (panier.length === 0) {
-    alert("Votre panier est vide");
-    return;
-  }
-
-  const orderData = {
-    user_id: currentUser.id, // L'ID récupéré par auth.js
-    total: calculerTotal(),
-    items: panier
-  };
-
-  try {
-    const response = await fetch("../backend/api/save_order.php", {
-       method: "POST",
-       headers: { "Content-Type": "application/json" },
-       body: JSON.stringify(orderData)
-    });
-
-    if (!response.ok) {
-        throw new Error("Erreur serveur : " + response.status);
-    }
-
-    const result = await response.json();
-
-    if (result.success) {
-      alert("Succès ! Votre commande est enregistrée en base de données.");
-      panier = [];
-      sauvegarderPanier();
-      window.location.href = "profil-client-desktop.html";
-    } else {
-      alert("Erreur : " + result.message);
-    }
-  } catch (error) {
-    console.error("Erreur envoi commande:", error);
-    alert("Erreur de connexion au serveur.");
-  }
-}
-
-// =========================================================
-// GESTION DES CLICS ET MODALE
-// =========================================================
-document.querySelectorAll(".add-to-cart-button").forEach((btn) => {
-  btn.addEventListener("click", function () {
-    let menu = {
-      id: parseInt(this.dataset.id), // RÉCUPÈRE LE 1, 2, 3 ou 4
-      nom: this.dataset.menu,
-      prix: parseFloat(this.dataset.price),
-      categorie: this.dataset.category
-    };
-    ouvrirModal(menu);
-  });
-});
 
 function ouvrirModal(menu) {
   menuActuel = menu;
-  document.getElementById("modalNom").innerText = menu.nom;
-  document.getElementById("modalPrix").innerText = menu.prix.toFixed(2);
-  document.getElementById("modalQuantite").value = 1;
+
+  const nom = document.getElementById("modalNom");
+  const prix = document.getElementById("modalPrix");
+  const quantite = document.getElementById("modalQuantite");
+  const modal = document.getElementById("menuModal");
+
+  if (!nom || !prix || !quantite || !modal) return;
+
+  nom.innerText = menu.nom;
+  prix.innerText = menu.prix.toFixed(2);
+  quantite.value = 1;
+
   updateTotalModal();
-  document.getElementById("menuModal").style.display = "flex";
+  modal.style.display = "flex";
 }
 
 function fermerModal() {
-  document.getElementById("menuModal").style.display = "none";
+  const modal = document.getElementById("menuModal");
+  if (modal) {
+    modal.style.display = "none";
+  }
 }
 
 function updateTotalModal() {
   if (!menuActuel) return;
-  let qte = parseInt(document.getElementById("modalQuantite").value) || 1;
-  let total = qte * menuActuel.prix;
-  document.getElementById("modalTotal").innerText = total.toFixed(2);
+
+  const quantiteInput = document.getElementById("modalQuantite");
+  const totalElement = document.getElementById("modalTotal");
+  if (!quantiteInput || !totalElement) return;
+
+  const qte = parseInt(quantiteInput.value, 10) || 1;
+  const total = qte * menuActuel.prix;
+
+  totalElement.innerText = total.toFixed(2);
 }
 
 function ajouterDepuisModal() {
-  let qte = parseInt(document.getElementById("modalQuantite").value) || 1;
+  if (!menuActuel) return;
+
+  const quantiteInput = document.getElementById("modalQuantite");
+  const qte = parseInt(quantiteInput?.value, 10) || 1;
+
   ajouterAuPanier({
     id: menuActuel.id,
     nom: menuActuel.nom,
     prix: menuActuel.prix,
     quantite: qte
   });
+
   fermerModal();
-  const confirmationModal = document.getElementById("confirmationModal");
-  if (confirmationModal) confirmationModal.classList.add("open");
+  afficherChoixApresAjout();
 }
 
-// Écouteur pour la quantité dans la modale
-const qteInput = document.getElementById("modalQuantite");
-if (qteInput) {
-  qteInput.addEventListener("input", updateTotalModal);
+// =========================================================
+// MODALE CONFIRMATION
+// =========================================================
+
+function afficherChoixApresAjout() {
+  const confirmationModal = document.getElementById("confirmationModal");
+  if (confirmationModal) {
+    confirmationModal.classList.add("open");
+  }
 }
+
+function fermerConfirmationModal() {
+  const confirmationModal = document.getElementById("confirmationModal");
+  if (confirmationModal) {
+    confirmationModal.classList.remove("open");
+  }
+}
+
+window.allerAuPanier = function () {
+  window.location.href = "/pages/profil-client-desktop.html";
+};
+
+// =========================================================
+// INIT
+// =========================================================
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".add-to-cart-button").forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const menu = {
+        id: parseInt(this.dataset.id, 10),
+        nom: this.dataset.menu,
+        prix: parseFloat(this.dataset.price),
+        categorie: this.dataset.category
+      };
+
+      ouvrirModal(menu);
+    });
+  });
+
+  const qteInput = document.getElementById("modalQuantite");
+  if (qteInput) {
+    qteInput.addEventListener("input", updateTotalModal);
+  }
+
+  const continueButton = document.getElementById("continueShoppingButton");
+  if (continueButton) {
+    continueButton.addEventListener("click", () => {
+      fermerConfirmationModal();
+    });
+  }
+
+  const cartButton = document.getElementById("goToCartButton");
+  if (cartButton) {
+    cartButton.addEventListener("click", () => {
+      allerAuPanier();
+    });
+  }
+});

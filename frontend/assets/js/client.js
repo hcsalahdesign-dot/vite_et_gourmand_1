@@ -113,7 +113,7 @@ function afficherCommandesClient() {
       <div class="row-employe">
         <div class="col-left">
           ${cmd.nom}<br>
-          <small>${cmd.dateCommande} - ${cmd.heureCommande}</small>
+          <small>${cmd.dateCommande || cmd.date || ""}${cmd.heureCommande ? " - " + cmd.heureCommande : ""}</small>
         </div>
 
 
@@ -122,7 +122,7 @@ function afficherCommandesClient() {
         <div class="col-center">${cmd.total.toFixed(2)} €</div>
 
         <div class="col-right">
-          <span class="${cmd.statut === "validé" ? "actif" : "inactif"}">
+          <span class="${cmd.statut === "En préparation" ? "actif" : "inactif"}">
             ${cmd.statut}
           </span>
         </div>
@@ -162,62 +162,71 @@ function validerCommande() {
 
   const user = getCurrentUser();
 
-  // 1. Préparation des données pour PHP
-  const donnéesCommande = {
-      user_id: user.id || 1,
-      articles: panier
-  };
+  if (!user) {
+    localStorage.setItem("redirectAfterLogin", "/pages/profil-client-desktop.html");
+    afficherMessageClient("Veuillez vous connecter pour valider votre commande");
+    setTimeout(() => {
+      window.location.href = "/pages/connexion-desktop.html";
+    }, 1500);
+    return;
+  }
 
-  // 2. ENVOI VERS MYSQL (Le test PHP)
-  // Chemin ABSOLU : on part de localhost
-  // 2. ENVOI VERS MYSQL (Le test PHP)
-  fetch('/vite_et_gourmand_1/backend/api/save_order.php', { 
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(donnéesCommande)
-  })
-  .then(response => {
-      // On vérifie si la réponse est valide avant de tenter de lire le JSON
-      if (!response.ok) {
-          throw new Error("Le serveur a répondu avec une erreur " + response.status);
+  // ✅ On récupère l'id réel depuis la BDD
+  fetch(`/backend/api/get_user_id.php?email=${encodeURIComponent(user.email)}`)
+    .then(res => res.json())
+    .then(data => {
+      if (!data.success) {
+        afficherMessageClient("Utilisateur introuvable en base de données.");
+        return;
       }
+
+      const donneesCommande = {
+        user_id: data.id,  // ✅ id réel depuis la BDD
+        total: calculerTotalPanier(),
+        items: panier
+      };
+
+      return fetch("/backend/api/save_order.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(donneesCommande)
+      });
+    })
+    .then(response => {
+      if (!response || !response.ok) throw new Error("Erreur serveur");
       return response.json();
-  })
-  .then(data => {
-      console.log("Réponse PHP :", data);
-      
+    })
+    .then(data => {
       if (data.success) {
-          // 3. Une fois envoyé au PHP, on garde ton ancienne logique de confirmation
-          let commandes = JSON.parse(localStorage.getItem(getCommandesKey())) || [];
-          
-          // On ajoute les articles au historique local
-          commandes.push(...panier.map(item => ({
-              ...item,
-              dateCommande: new Date().toLocaleDateString("fr-FR"),
-              statut: "en attente", 
-              clientEmail: user.email
-          })));
+        let commandes = JSON.parse(localStorage.getItem(getCommandesKey())) || [];
+        commandes.push(
+          ...panier.map(item => ({
+            ...item,
+            dateCommande: new Date().toLocaleDateString("fr-FR"),
+            heureCommande: new Date().toLocaleTimeString("fr-FR", {
+              hour: "2-digit",
+              minute: "2-digit"
+            }),
+            statut: "En préparation",
+            clientEmail: user.email,
+            orderId: data.order_id || null
+          }))
+        );
 
-          // Mise à jour du stockage local
-          localStorage.setItem(getCommandesKey(), JSON.stringify(commandes));
-          localStorage.removeItem(getPanierKey());
-          
-          // Reset de la variable globale du panier
-          panier = [];
+        localStorage.setItem(getCommandesKey(), JSON.stringify(commandes));
+        localStorage.removeItem(getPanierKey());
+        panier = [];
 
-          // Mise à jour de l'interface
-          afficherMessageClient("Commande envoyée en cuisine ! ✔");
-          afficherPanierClient();
-          afficherCommandesClient();
+        afficherMessageClient("Commande envoyée en cuisine !");
+        afficherPanierClient();
+        afficherCommandesClient();
       } else {
-          // Si le PHP renvoie success: false (ex: erreur SQL)
-          alert("Erreur base de données : " + data.message);
+        afficherMessageClient("Erreur : " + data.message);
       }
-  })
-  .catch(error => {
-      console.error("Erreur PHP/Fetch :", error);
-      afficherMessageClient("Erreur de connexion au serveur : " + error.message);
-  });
+    })
+    .catch(error => {
+      afficherMessageClient("Erreur de connexion : " + error.message);
+    });
 }
 
 
@@ -226,7 +235,7 @@ function validerCommande() {
 // =========================================================
 
 function supprimerItem(id) {
-  panier = panier.filter((p) => p.id !== id);
+  panier = panier.filter((p) => String(p.id) !== String(id));
   localStorage.setItem(getPanierKey(), JSON.stringify(panier));
   afficherPanierClient();
 }
@@ -236,16 +245,15 @@ function supprimerItem(id) {
 // =========================================================
 
 document.addEventListener("DOMContentLoaded", () => {
-  afficherPanierClient();
-  afficherCommandesClient();
-
   const btn = document.getElementById("btnValider");
   if (btn) btn.addEventListener("click", validerCommande);
-
 
   const clientMessageCloseButton = document.getElementById("clientMessageCloseButton");
   if (clientMessageCloseButton) {
     clientMessageCloseButton.addEventListener("click", fermerMessageClient);
   }
 
+  afficherPanierClient();
+  afficherCommandesClient();
 });
+

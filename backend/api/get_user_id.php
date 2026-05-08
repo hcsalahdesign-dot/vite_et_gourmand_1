@@ -1,12 +1,12 @@
 <?php
 header("Content-Type: application/json");
-require_once '../Database.php';
+require_once '../config/Database.php';
 
 $email = $_GET['email'] ?? '';
 
 try {
     $db = (new Database())->getConnection();
-    $stmt = $db->prepare("SELECT id FROM users WHERE email = ?");
+    $stmt = $db->prepare("SELECT id FROM utilisateurs WHERE email = ?");
     $stmt->execute([$email]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 

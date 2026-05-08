@@ -1,5 +1,6 @@
 services:
-  v_et_g_db:  # C'est ce nom là qui compte !
+
+  v_et_g_db:
     image: mysql:8.0
     restart: always
     environment:
@@ -17,8 +18,21 @@ services:
       - "80:80"
     volumes:
       - ./frontend:/var/www/html
-      - ./backend:/var/www/backend
+      - ./backend:/var/www/html/backend
     depends_on:
       - v_et_g_db
     command: >
       sh -c "docker-php-ext-install pdo pdo_mysql && apache2-foreground"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: v_et_g_db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root
+    depends_on:
+      - v_et_g_db
+
