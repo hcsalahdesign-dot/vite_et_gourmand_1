@@ -1,3 +1,16 @@
+// SIMULATION CONNEXION (À mettre au début du script)
+if (!localStorage.getItem("currentUser")) {
+    const john = {
+        id: 1,
+        nom: "John Test",
+        email: "john@test.com",
+        role: "client"
+    };
+    localStorage.setItem("currentUser", JSON.stringify(john));
+    localStorage.setItem("user_id", 1); // Pour ton futur test PHP
+}
+
+
 console.log("auth.js chargé");
 
 function estConnecte() {
@@ -122,29 +135,38 @@ document.addEventListener("DOMContentLoaded", () => {
   // LOGIN
   // =========================
 
-  window.login = function (email, password) {
+  window.login = async function (email, password) {
     let users = getUsers();
-
     const user = users.find((u) => u.email === email && u.password === password);
 
     if (!user) {
-      alert("Identifiants incorrects");
-      return;
+        alert("Identifiants incorrects");
+        return;
     }
 
-    localStorage.setItem("currentUser", JSON.stringify(user));
+    // --- AJOUT POUR LE BACK-END ---
+    try {
+        // On demande au PHP de nous donner l'ID de cet utilisateur
+        const response = await fetch(`/backend/api/get_user_id.php?email=${email}`);
+        const data = await response.json();
+        
+        if (data.success) {
+            user.id = data.id; // On injecte l'ID SQL dans l'objet utilisateur local
+        }
+    } catch (e) {
+        console.error("Impossible de récupérer l'ID SQL", e);
+    }
+    // ------------------------------
 
+    localStorage.setItem("currentUser", JSON.stringify(user));
     updateHeaderAuthState();
 
-    //*alert("Connexion réussie"); si besoin de debug.
-
     const redirectAfterLogin = localStorage.getItem("redirectAfterLogin");
-
     if (redirectAfterLogin) {
-      localStorage.removeItem("redirectAfterLogin");
-      window.location.href = redirectAfterLogin;
+        localStorage.removeItem("redirectAfterLogin");
+        window.location.href = redirectAfterLogin;
     } else {
-      redirectByRole(user);
+        redirectByRole(user);
     }
   };
 

@@ -162,47 +162,64 @@ function validerCommande() {
 
   const user = getCurrentUser();
 
-  if (!user) {
-  localStorage.setItem("redirectAfterLogin", "/pages/profil-client-desktop.html");
-  afficherMessageClient("Veuillez vous connecter pour valider votre commande");
+  // 1. Préparation des données pour PHP
+  const donnéesCommande = {
+      user_id: user.id || 1,
+      articles: panier
+  };
 
-  setTimeout(() => {
-    window.location.href = "/pages/connexion-desktop.html";
-  }, 1200);
+  // 2. ENVOI VERS MYSQL (Le test PHP)
+  // Chemin ABSOLU : on part de localhost
+  // 2. ENVOI VERS MYSQL (Le test PHP)
+  fetch('/vite_et_gourmand_1/backend/api/save_order.php', { 
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(donnéesCommande)
+  })
+  .then(response => {
+      // On vérifie si la réponse est valide avant de tenter de lire le JSON
+      if (!response.ok) {
+          throw new Error("Le serveur a répondu avec une erreur " + response.status);
+      }
+      return response.json();
+  })
+  .then(data => {
+      console.log("Réponse PHP :", data);
+      
+      if (data.success) {
+          // 3. Une fois envoyé au PHP, on garde ton ancienne logique de confirmation
+          let commandes = JSON.parse(localStorage.getItem(getCommandesKey())) || [];
+          
+          // On ajoute les articles au historique local
+          commandes.push(...panier.map(item => ({
+              ...item,
+              dateCommande: new Date().toLocaleDateString("fr-FR"),
+              statut: "en attente", 
+              clientEmail: user.email
+          })));
 
-  return;
-  }
+          // Mise à jour du stockage local
+          localStorage.setItem(getCommandesKey(), JSON.stringify(commandes));
+          localStorage.removeItem(getPanierKey());
+          
+          // Reset de la variable globale du panier
+          panier = [];
 
-
-  let commandes = JSON.parse(localStorage.getItem(getCommandesKey())) || [];
-
- commandes.push(
-  ...panier.map((item) => ({
-    ...item,
-    dateCommande: new Date().toLocaleDateString("fr-FR"),
-    heureCommande: new Date().toLocaleTimeString("fr-FR", {
-      hour: "2-digit",
-      minute: "2-digit"
-    }),
-    statut: "validé",
-    clientEmail: user.email
-  }))
- );
-
-
-  localStorage.setItem(getCommandesKey(), JSON.stringify(commandes));
-
-  panier = [];
-  localStorage.removeItem(getPanierKey());
-
-  afficherMessageClient("Commande validée ✔");
-
-  document.body.classList.add("commande-ok");
-  setTimeout(() => document.body.classList.remove("commande-ok"), 800);
-
-  afficherPanierClient();
-  afficherCommandesClient();
+          // Mise à jour de l'interface
+          afficherMessageClient("Commande envoyée en cuisine ! ✔");
+          afficherPanierClient();
+          afficherCommandesClient();
+      } else {
+          // Si le PHP renvoie success: false (ex: erreur SQL)
+          alert("Erreur base de données : " + data.message);
+      }
+  })
+  .catch(error => {
+      console.error("Erreur PHP/Fetch :", error);
+      afficherMessageClient("Erreur de connexion au serveur : " + error.message);
+  });
 }
+
 
 // =========================================================
 // SUPPRESSION PANIER

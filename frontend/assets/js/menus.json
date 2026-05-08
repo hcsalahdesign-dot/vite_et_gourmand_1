@@ -1,0 +1,26 @@
+{
+  "Classiques": [
+    { "nom": "Poulet à la crème", "prix": 13.90, "image": "/assets/images/Images menus/Classiques/Poulet à la crème.jpg" },
+    { "nom": "Cabillaud à la provençale", "prix": 14.90, "image": "/assets/images/Images menus/Classiques/cabillaud à la provençale.jpeg" },
+    { "nom": "Ragoût de bœuf", "prix": 12.90, "image": "/assets/images/Images menus/Classiques/Ragout de bœuf.jpg" },
+    { "nom": "Poulet à la moutarde", "prix": 13.90, "image": "/assets/images/Images menus/Classiques/poulet à la moutarde.jpg" }
+  ],
+  "Evènements": [
+    { "nom": "Classique Entreprises", "prix": 16.90, "image": "/assets/images/Images menus/Evènements/Classique Entreprises.jpeg" },
+    { "nom": "Spécial Noël", "prix": 15.90, "image": "/assets/images/Images menus/Evènements/Spécial Noël.jpg" },
+    { "nom": "Banquet végétarien", "prix": 14.90, "image": "/assets/images/Images menus/Evènements/Banquet végétarien.jpg" },
+    { "nom": "Banquet montagnard", "prix": 18.90, "image": "/assets/images/Images menus/Evènements/Banquet montagnard.jpg" }
+  ],
+  "Saisonniers": [
+    { "nom": "Saumon printanier", "prix": 18.90, "image": "/assets/images/Images menus/Saisonniers/Saumon printanier.jpg" },
+    { "nom": "Escalope d’automne", "prix": 16.90, "image": "/assets/images/Images menus/Saisonniers/Escalope d’automne.jpg" },
+    { "nom": "Poisson à la moutarde", "prix": 14.90, "image": "/assets/images/Images menus/Saisonniers/Poisson à la moutarde.jpg" },
+    { "nom": "Rôti aux légumes", "prix": 17.90, "image": "/assets/images/Images menus/Saisonniers/global flavours.avif" }
+  ],
+  "Végétariens": [
+    { "nom": "Assiette crudités", "prix": 12.90, "image": "/assets/images/Images menus/Végétariens/assiette crudités.jpeg" },
+    { "nom": "Raviolis aux légumes", "prix": 14.90, "image": "/assets/images/Images menus/Végétariens/Raviolis aux légumes.jpg" },
+    { "nom": "Pavé de légumes proteiné", "prix": 18.90, "image": "/assets/images/Images menus/Végétariens/Pavé de légumes proteiné.jpg" },
+    { "nom": "Soupe de potimarron", "prix": 12.90, "image": "/assets/images/Images menus/Végétariens/Soupe de potimarron.jpeg" }
+  ]
+}

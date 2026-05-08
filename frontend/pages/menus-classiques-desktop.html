@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="/assets/css/global.css">
-  <link rel="stylesheet" href="/assets/styleguide/styleguide.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/styleguide/styleguide.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
 
-  <link rel="stylesheet" href="/assets/css/sections/menu-type.css">
-  <link rel="stylesheet" href="/assets/css/sections/menus-classiques-responsive.css">
+  <link rel="stylesheet" href="../assets/css/sections/menu-type.css">
+  <link rel="stylesheet" href="../assets/css/sections/menus-classiques-responsive.css">
 
 
 
@@ -17,9 +17,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
-  <script src="/assets/js/navigation.js" defer></script>
-  <script src="/assets/js/auth.js" defer></script>
-  <script src="/assets/js/commande.js" defer></script>
+  <script src="../assets/js/navigation.js" defer></script>
+  <script src="../assets/js/auth.js" defer></script>
+  <script src="../assets/js/commande.js" defer></script>
 
 
   <title>Vite & Gourmand</title>
@@ -35,18 +35,18 @@
 
             <div class="header-actions">
                 <button class="bouton-panier" id="cartButton" type="button" data-nav="profilClient" style="display: none;">
-                    <img src="/assets/cart2.svg" alt="Panier" class="cart2 ">
+                    <img src="../assets/cart2.svg" alt="Panier" class="cart2 ">
                     <span>Aller au panier</span>
                 </button>
 
                 <button class="bouton-mon-compte d-flex align-items-center" data-nav="connexion">
-                <img src="/assets/person-circle.svg" alt="Utilisateur" class="user me-2">
+                <img src="../assets/person-circle.svg" alt="Utilisateur" class="user me-2">
                 <span>Mon compte/s’inscrire</span>
                 </button>
             </div>
 
             <div class="nav__mobile-menu">
-                <img src="/assets/menu-burger.svg" alt="menu-burger">
+                <img src="../assets/menu-burger.svg" alt="menu-burger">
             </div>
             </div>
 
@@ -77,16 +77,14 @@
           </p>
 
           <div class="menu-page-card__image">
-            <img src="/assets/images/Images menus/Classiques/Poulet à la crème.jpg" alt="Poulet à la crème">
+            <img src="../assets/images/Images menus/Classiques/Poulet à la crème.jpg" alt="Poulet à la crème">
 
-            <button
-              class="add-to-cart-button"
-              type="button"
-              data-menu="Poulet à la crème"
-              data-price="13.90"
-              data-category="Classiques"
-              aria-label="Ajouter Poulet à la crème à la commande">
-              <img src="/assets/plus-circle-fill-grey.svg" alt="">
+            <button class="add-to-cart-button" 
+                    data-id="1" 
+                    data-menu="Poulet à la crème" 
+                    data-price="13.90" 
+                    data-category="Classiques">
+                <img src="../assets/plus-circle-fill-grey.svg" alt="Ajouter">
             </button>
           </div>
 
@@ -97,15 +95,16 @@
             Cabillaud à la provençale - <span class="menu-price">14,90 €</span>
           </p>
           <div class="menu-page-card__image">
-            <img src="/assets/images/Images menus/Classiques/cabillaud à la provençale.jpeg" alt="Cabillaud à la provençale">
+            <img src="../assets/images/Images menus/Classiques/cabillaud à la provençale.jpeg" alt="Cabillaud à la provençale">
            <button
             class="add-to-cart-button"
             type="button"
+            data-id="2"
             data-menu="Cabillaud à la provençale"
             data-price="14.90"
             data-category="Classiques"
             aria-label="Ajouter Cabillaud à la provençale à la commande">
-            <img src="/assets/plus-circle-fill-grey.svg" alt="">
+            <img src="../assets/plus-circle-fill-grey.svg" alt="">
             </button>
           </div>
           
@@ -117,16 +116,17 @@
           </p>
           <div class="menu-page-card__image">
            
-            <img src="/assets/images/Images menus/Classiques/Ragout de bœuf.jpg" alt="Ragoût de bœuf">
+            <img src="../assets/images/Images menus/Classiques/Ragout de bœuf.jpg" alt="Ragoût de bœuf">
             
             <button
               class="add-to-cart-button"
               type="button"
+              data-id="3"
               data-menu="Ragoût de bœuf"
               data-price="12.90"
               data-category="Classiques"
               aria-label="Ajouter Ragoût de bœuf à la commande">
-              <img src="/assets/plus-circle-fill-grey.svg" alt="">
+              <img src="../assets/plus-circle-fill-grey.svg" alt="">
             </button>
 
           </div>
@@ -138,16 +138,17 @@
             Poulet à la moutarde - <span class="menu-price">13,90 €</span>
           </p>
           <div class="menu-page-card__image">
-            <img src="/assets/images/Images menus/Classiques/poulet à la moutarde.jpg" alt="Poulet à la moutarde">
+            <img src="../assets/images/Images menus/Classiques/poulet à la moutarde.jpg" alt="Poulet à la moutarde">
           
           <button
             class="add-to-cart-button"
             type="button"
+            data-id="4"
             data-menu="Poulet à la moutarde"
             data-price="13.90"
             data-category="Classiques"
             aria-label="Ajouter Poulet à la moutarde à la commande">
-            <img src="/assets/plus-circle-fill-grey.svg" alt="">
+            <img src="../assets/plus-circle-fill-grey.svg" alt="">
           </button>
           
           </div>
@@ -179,8 +180,17 @@
         <p>Produit ajouté au panier</p>
 
         <div class="confirmation-modal__actions">
-          <button type="button" id="continueShoppingButton">Continuer mes achats</button>
-          <button type="button" id="goToCartButton">Aller au panier</button>
+          <!-- On retire la classe 'open' pour fermer la modale -->
+          <button type="button" id="continueShoppingButton" 
+                  onclick="document.getElementById('confirmationModal').classList.remove('open')">
+            Continuer mes achats
+          </button>
+
+          <!-- Lien direct car on est déjà dans le dossier /pages/ -->
+          <button type="button" id="goToCartButton" 
+                  onclick="window.location.href='profil-client-desktop.html'">
+            Aller au panier
+          </button>
         </div>
       </div>
     </div>

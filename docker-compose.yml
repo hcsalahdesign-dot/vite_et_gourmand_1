@@ -1,0 +1,24 @@
+services:
+  v_et_g_db:  # C'est ce nom là qui compte !
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: vite_et_gourmand
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  v_et_g_web:
+    image: php:8.2-apache
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend:/var/www/html
+      - ./backend:/var/www/backend
+    depends_on:
+      - v_et_g_db
+    command: >
+      sh -c "docker-php-ext-install pdo pdo_mysql && apache2-foreground"
