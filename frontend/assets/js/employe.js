@@ -1,117 +1,100 @@
 console.log("employe.js chargé");
 
-// =========================================================
-// OUTILS
-// =========================================================
-
-function getAllCommandesClients() {
-  const allCommandes = [];
-
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-
-    if (key && key.startsWith("commandes_")) {
-      const commandes = JSON.parse(localStorage.getItem(key)) || [];
-      allCommandes.push(...commandes);
-    }
-  }
-
-  return allCommandes;
-}
-
-// =========================================================
-// AFFICHAGE COMMANDES EMPLOYE
-// =========================================================
-
-function afficherCommandesEmploye() {
+document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("employeeOrdersContainer");
+
   if (!container) return;
 
-  const commandes = getAllCommandesClients().filter(
-    (cmd) => cmd.statut === "validé"
-  );
+  fetch("/backend/api/get_orders.php")
+    .then(res => res.json())
+    .then(data => {
 
-  container.innerHTML = "";
+      console.log("DATA ORDERS:", data);
 
-  if (commandes.length === 0) {
-    container.innerHTML = `
-      <div class="row-employe">
-        <div class="col-left">-</div>
-        <div class="col-center">Aucune commande en cours</div>
-        <div class="col-center">-</div>
-        <div class="col-center">0.00 €</div>
-        <div class="col-right">-</div>
-      </div>
-    `;
+      if (!data.success || !Array.isArray(data.orders)) {
+        container.innerHTML = "<p>Erreur chargement commandes</p>";
+        return;
+      }
+
+      if (data.orders.length === 0) {
+        container.innerHTML = "<p>Aucune commande en cours</p>";
+        return;
+      }
+
+      container.innerHTML = "";
+
+      data.orders.forEach(order => {
+
+        container.innerHTML += `
+          <div class="row-employe">
+
+            <!-- LEFT -->
+            <div class="col-left">
+              Client<br>
+              #${order.order_id}
+            </div>
+
+            <!-- CENTER -->
+            <div class="col-center">
+              <div class="order-line">
+                Commande #${order.order_id}
+              </div>
+
+              <div class="order-line">
+                Total : ${order.total} €
+              </div>
+
+              <small>
+                ${order.created_at ? order.created_at : ""}
+              </small>
+            </div>
+
+            <!-- RIGHT -->
+            <div class="col-right">
+
+              <button class="btn-prendre"
+                onclick="prendreCommande(${order.order_id})">
+                Prendre
+              </button>
+
+              <button class="btn-livree" disabled>
+                Livré
+              </button>
+
+            </div>
+
+          </div>
+        `;
+      });
+    })
+    .catch(err => {
+      console.error("Erreur API :", err);
+      container.innerHTML = "<p>Erreur serveur</p>";
+    });
+});
+
+function prendreCommande(id) {
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  if (!user || user.role !== "employe") {
+    alert("Accès refusé");
     return;
   }
 
-  [...commandes].reverse().forEach((cmd) => {
-    container.innerHTML += `
-      <div class="row-employe">
-        <div class="col-left">
-          ${cmd.clientEmail || "Client"}<br>
-          <small>${cmd.dateCommande || cmd.date || ""}${cmd.heureCommande ? " - " + cmd.heureCommande : ""}</small>
-        </div>
-
-        <div class="col-center">${cmd.nom}</div>
-
-        <div class="col-center">${cmd.quantite} pers</div>
-
-        <div class="col-center total">${cmd.total.toFixed(2)} €</div>
-
-        <div class="col-right statut-col">
-            <span class="actif">${cmd.statut}</span>
-        </div>
-
-        <div class="col-right action-col">
-
-            <button
-                class="btn-livree"
-                type="button"
-                onclick="marquerCommeLivree('${cmd.clientEmail}', '${cmd.id}', '${cmd.dateCommande || cmd.date || ""}', '${cmd.heureCommande || ""}')"
-            >
-                Livré
-            </button>
-        </div>
-
-      </div>
-    `;
-  });
+  fetch("/backend/api/assign_order.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      order_id: id,
+      employee_id: user.id
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log("Commande prise :", data);
+    location.reload();
+  })
+  .catch(err => console.error(err));
 }
-
-// =========================================================
-// PASSAGE EN LIVREE
-// =========================================================
-
-window.marquerCommeLivree = function (clientEmail, commandeId, dateCommande, heureCommande) {
-  const commandesKey = "commandes_" + clientEmail;
-  let commandes = JSON.parse(localStorage.getItem(commandesKey)) || [];
-
-  commandes = commandes.map((cmd) => {
-    const sameId = cmd.id === commandeId;
-    const sameDate = (cmd.dateCommande || cmd.date || "") === dateCommande;
-    const sameHeure = (cmd.heureCommande || "") === heureCommande;
-
-    if (sameId && sameDate && sameHeure) {
-      return {
-        ...cmd,
-        statut: "livrée"
-      };
-    }
-
-    return cmd;
-  });
-
-  localStorage.setItem(commandesKey, JSON.stringify(commandes));
-
-  afficherCommandesEmploye();
-};
-
-// =========================================================
-// INIT
-// =========================================================
-
-document.addEventListener("DOMContentLoaded", () => {
-  afficherCommandesEmploye();
-});

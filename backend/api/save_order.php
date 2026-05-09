@@ -22,12 +22,15 @@ try {
     $orderId = $db->lastInsertId();
 
     // 2. Insertion dans order_items
-    $stmtItem = $db->prepare("INSERT INTO order_items (order_id, menu_id, quantite) VALUES (?, ?, ?)");
+    $stmtItem = $db->prepare("INSERT INTO order_items (order_id, menu_id, nom_menu, quantite)
+    VALUES (?, ?, ?, ?)"
+    );
 
     foreach ($data['items'] as $item) {
         $stmtItem->execute([
             $orderId,
             $item['id'],
+            $item['nom'],
             $item['quantite']
         ]);
     }

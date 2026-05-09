@@ -79,6 +79,8 @@ body.page-employe-space {
   height: 60px;
 }
 
+
+
 /* alternance */
 .row-employe:nth-child(odd) {
   background: #d9d9d9;
@@ -92,7 +94,7 @@ body.page-employe-space {
 ========================================================= */
 
 .col-left {
-  width: 400px;
+  width: 300px;
 
   background: #617279;
   color: #d9d9d9;
@@ -113,8 +115,7 @@ body.page-employe-space {
 }
 
 .col-center {
-  width: 400px;
-
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -131,8 +132,8 @@ body.page-employe-space {
 }
 
 .col-right {
-  width: 200px;
-
+  width: 250px;
+ 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -242,7 +243,7 @@ body.page-employe-space {
    Bouton "Livré"
 ========================================================= */
 .btn-livree {
-  min-width: 90px;
+  min-width: 80px;
   height: 30px;
   padding: 0 14px;
   border: none;
@@ -262,6 +263,36 @@ body.page-employe-space {
   opacity: 0.9;
 }
 
+/* =========================================================
+   Bouton "Livré"
+========================================================= */
+
+.btn-prendre {
+  min-width: 80px;
+  height: 30px;
+
+  border: none;
+  border-radius: 10px;
+
+  background-color: #2ecc71; /* vert */
+  color: #ffffff;
+
+  font-family: "Lato", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* effet au survol */
+.btn-prendre:hover {
+  background-color: #27ae60;
+}
+
 
 /* =========================================================
    STATUTS
@@ -278,6 +309,7 @@ body.page-employe-space {
   font-weight: bold;
   font-size: 11px;
 }
+
 
 /* ================= IMAGES ================= */
 
