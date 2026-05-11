@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 <button class="btn-livree" onclick="livrerCommande(${order.order_id})"
                     ${!order.employee_id ? 'disabled style="opacity:0.4; cursor:default;"' : ''}>
-                    Livré
+                    Livrée
                 </button>
             </div>
 
@@ -211,20 +211,45 @@ function signalerReappro(menuId) {
 
 
 function livrerCommande(id) {
-    if (!confirm("Confirmer la livraison de la commande #" + id + " ?")) return;
-
-    fetch("/backend/api/livrer_order.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ order_id: id })
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) {
-            location.reload();
-        } else {
-            alert("Erreur : " + data.message);
+    // Remplacer confirm() par une modale custom
+    afficherConfirmation(
+        `Confirmer la livraison de la commande #${id} ?`,
+        () => {
+            fetch("/backend/api/livrer_order.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ order_id: id })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    location.reload();
+                } else {
+                    alert("Erreur : " + data.message);
+                }
+            })
+            .catch(err => console.error("Erreur livraison :", err));
         }
-    })
-    .catch(err => console.error("Erreur livraison :", err));
+    );
+}
+
+function afficherConfirmation(message, onConfirm) {
+    const modal = document.getElementById("confirmModal");
+    const text = document.getElementById("confirmText");
+    const btnOk = document.getElementById("confirmOk");
+    const btnAnnuler = document.getElementById("confirmAnnuler");
+
+    if (!modal || !text) return;
+
+    text.innerText = message;
+    modal.classList.add("open");
+
+    btnOk.onclick = () => {
+        modal.classList.remove("open");
+        onConfirm();
+    };
+
+    btnAnnuler.onclick = () => {
+        modal.classList.remove("open");
+    };
 }

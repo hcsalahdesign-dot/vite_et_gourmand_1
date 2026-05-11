@@ -14,7 +14,7 @@ try {
 
     $stmt = $db->prepare("
         UPDATE orders 
-        SET statut = 'Livré' 
+        SET statut = 'Livrée' 
         WHERE id = ?
     ");
     $stmt->execute([$data["order_id"]]);

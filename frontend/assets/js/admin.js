@@ -204,7 +204,7 @@ function afficherHistorique() {
                             ${parseFloat(cmd.total).toFixed(2)} €
                         </div>
                         <div class="col-right">
-                            <span class="${cmd.statut === 'Livré' ? 'actif' : 'inactif'}">
+                            <span class="${cmd.statut === 'Livrée' ? 'actif' : 'inactif'}">
                                 ${cmd.statut}
                             </span>
                         </div>

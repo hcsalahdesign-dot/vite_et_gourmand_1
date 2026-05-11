@@ -9,7 +9,7 @@ try {
                u.nom as client_nom, u.email as client_email
         FROM orders o
         JOIN utilisateurs u ON o.user_id = u.id
-        WHERE o.statut = 'Livré'
+        WHERE o.statut = 'Livrée'
         ORDER BY o.date_commande DESC
     ");
 

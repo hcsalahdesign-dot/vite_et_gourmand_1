@@ -5,9 +5,9 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: vite_et_gourmand
-      MYSQL_ROOT_PASSWORD: h!&mHY@_300
+      MYSQL_ROOT_PASSWORD: h!&mHwY@_315
       MYSQL_USER: salah_webdev        # ← nouvel identifiant
-      MYSQL_PASSWORD: h!&mHY@_301  # ← nouveau mot de passe
+      MYSQL_PASSWORD: h!&mHwY@_316  # ← nouveau mot de passe
     ports:
       - "3306:3306"
     volumes:
@@ -34,7 +34,7 @@ services:
     environment:
       PMA_HOST: v_et_g_db
       PMA_PORT: 3306
-      MYSQL_ROOT_PASSWORD: h!&mHY@_300
+      MYSQL_ROOT_PASSWORD: h!&mHwY@_315
     depends_on:
       - v_et_g_db
 
