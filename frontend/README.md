@@ -1,12 +1,3 @@
-# Identifiants de test
-
-
-## Base de données
-| Identifiant | Mot de passe |
-|---|---|
-| root | h!&mHY@_300 |
-| salah_webdev | h!&mHY@_301 |
-
 ## Profils de connexion
 
 ### Admin
@@ -26,3 +17,4 @@
 |---|---|---|
 | julie@exemple.com | password | client |
 | hcsalah.design@gmail.com | password | client |
+
