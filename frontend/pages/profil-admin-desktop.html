@@ -20,6 +20,7 @@
   <script src="../assets/js/navigation.js" defer></script>
   <script src="../assets/js/auth.js" defer></script>
   <script src="../assets/js/client.js" defer></script>
+  <script src="../assets/js/admin.js" defer></script>
   
   <title>Vite & Gourmand</title>
 </head>
@@ -73,251 +74,57 @@
 <!-- --------------------------------GESTION DES EMPLOYÉS---------------------------------- -->
             
             <div class="client-table client-table--first">
-
                 <div class="client-table__row client-table__row--title-primary">
                     Gestion des Employés
                 </div>
-
-                <div class="row-employe">
-
-                    <div class="col-left">
-                    Employé 1<br>
-                    <small>Rôle</small>
-                    </div>
-
-                    <div class="col-center">
-                    employe1@email.com<br>
-                    <span class="actif">actif</span>
-                    </div>
-
-                    <div class="col-right">
-                    <img src="../assets/pencil-square.svg" class="icon">
-                    <img src="../assets/trash3.svg" class="icon">
-                    </div>
-
+                <div id="employesContainer"></div>
+                <div class="row-employe" style="justify-content: center; padding: 10px;">
+                    <button class="btn-ajouter" onclick="ouvrirFormulaireEmploye()">
+                        + Ajouter un employé
+                    </button>
                 </div>
+            </div>
 
-                <div class="row-employe">
-
-                    <div class="col-left">
-                    Employé 2<br>
-                    <small>Rôle</small>
+            <!-- Formulaire ajout employé -->
+            <div id="modalEmploye" class="modal-overlay">
+                <div class="modal-box">
+                    <h3>Ajouter un employé</h3>
+                    <input type="text" id="empContrat" placeholder="Numéro de contrat">
+                    <input type="text" id="empNom" placeholder="Nom et Prénom">
+                    <input type="email" id="empEmail" placeholder="Email">
+                    <input type="tel" id="empTel" placeholder="Téléphone">
+                    <input type="password" id="empPassword" placeholder="Mot de passe">
+                    <div class="modal-buttons">
+                        <button class="btn-valider" onclick="ajouterEmploye()">Ajouter</button>
+                        <button class="btn-annuler" onclick="fermerFormulaireEmploye()">Annuler</button>
                     </div>
-
-                    <div class="col-center">
-                    employe2@email.com<br>
-                    <span class="actif">actif</span>
-                    </div>
-
-                    <div class="col-right">
-                    <img src="../assets/pencil-square.svg" class="icon">
-                    <img src="../assets/trash3.svg" class="icon">
-                    </div>
-
                 </div>
-
-                <div class="row-employe">
-
-                    <div class="col-left">
-                    Employé 3<br>
-                    <small>Rôle</small>
-                    </div>
-
-                    <div class="col-center">
-                    employe3@email.com<br>
-                    <span class="actif">actif</span>
-                    </div>
-
-                    <div class="col-right">
-                    <img src="../assets/pencil-square.svg" class="icon">
-                    <img src="../assets/trash3.svg" class="icon">
-                    </div>
-
-                </div>
-
             </div>
 
  <!-- --------------------------------GESTION DES MENUS---------------------------------- -->
 
            <div class="block menus">
+                <div class="block-header">Gestion des menus</div>
+            </div>
 
-                    <div class="block-header">Gestion des menus</div>
+ <!-- --------------------------------COMMANDES EN COURS---------------------------------- -->
 
-                        <!-- MENU-TYPE 1 -->
-                        <div class="row-menus">
-
-                            <div class="col-left">
-                            Menus Classiques<br>
-                            <small>01/05/2026</small>
-                            </div>
-
-                            <div class="col-center">
-
-                            <div class="menu-line">
-                                <span class="menu-name">Poulet à la crème</span>
-                                <span class="menu-price">13€90</span>
-                                <span class="menu-status actif">disponible</span>
-                            </div>
-
-                            <div class="menu-line">
-                                <span class="menu-name">Ragoût de boeuf</span>
-                                <span class="menu-price">12€90</span>
-                                <span class="menu-status actif">disponible</span>
-                            </div>
-
-                            <div class="menu-line">
-                                <span class="menu-name">Cabillaud à la provençale</span>
-                                <span class="menu-price">14€90</span>
-                                <span class="menu-status inactif">indisponible</span>
-                            </div>
-
-                            <div class="menu-line">
-                                <span class="menu-name">Poulet à la moutarde</span>
-                                <span class="menu-price">13€90</span>
-                                <span class="menu-status actif">disponible</span>
-                            </div>
-
-                            </div>
-
-                            <div class="col-right">
-                            <img src="../assets/pencil-square.svg" class="icon">
-                            <img src="../assets/trash3.svg" class="icon">
-                            </div>
-
-                        </div>
-
-                        <!-- MENU-TYPE 2 -->
-                        <div class="row-menus">
-
-                            <div class="col-left">
-                            Menus Végétariens<br>
-                            <small>01/05/2026</small>
-                            </div>
-
-                            <div class="col-center">
-
-                            <div class="menu-line">
-                                <span class="menu-name">Assiette crudités</span>
-                                <span class="menu-price">12,90 €</span>
-                                <span class="menu-status actif">disponible</span>
-                            </div>
-
-                            <div class="menu-line">
-                                <span class="menu-name">Raviolis aux légumes</span>
-                                <span class="menu-price">14,90 €</span>
-                                <span class="menu-status actif">disponible</span>
-                            </div>
-
-                            <div class="menu-line">
-                                <span class="menu-name">Pavé de légumes proteiné</span>
-                                <span class="menu-price">18,90 €</span>
-                                <span class="menu-status actif">disponible</span>
-                            </div>
-
-                            <div class="menu-line">
-                                <span class="menu-name">Soupe de potimarron</span>
-                                <span class="menu-price">12,90 €</span>
-                                <span class="menu-status actif">disponible</span>
-                            </div>
-
-                            </div>
-
-                            <div class="col-right">
-                            <img src="../assets/pencil-square.svg" class="icon">
-                            <img src="../assets/trash3.svg" class="icon">
-                            </div>
-
-                        </div>
-
-                        <!-- MENU-TYPE 3 -->
-                        <div class="row-menus">
-
-                            <div class="col-left">
-                                Menus Événements<br>
-                                <small>03/01/2026</small>
-                            </div>
-
-                            <div class="col-center">
-
-                                <div class="menu-line">
-                                    <span class="menu-name">Classique Entreprises</span>
-                                    <span class="menu-price">16,90 €</span>
-                                    <span class="menu-status actif">disponible</span>
-                                </div>
-
-                                <div class="menu-line">
-                                    <span class="menu-name">Spécial Noël</span>
-                                    <span class="menu-price">15,90 €</span>
-                                    <span class="menu-status actif">disponible</span>
-                                </div>
-
-                                <div class="menu-line">
-                                    <span class="menu-name">Banquet végétarien</span>
-                                    <span class="menu-price">14,90 €</span>
-                                    <span class="menu-status actif">disponible</span>
-                                </div>
-
-                                <div class="menu-line">
-                                    <span class="menu-name">Banquet montagnard</span>
-                                    <span class="menu-price">18,90 €</span>
-                                    <span class="menu-status actif">disponible</span>
-                                </div>
-
-                            </div>
-
-                            <div class="col-right">
-                                <img src="../assets/pencil-square.svg" class="icon">
-                                <img src="../assets/trash3.svg" class="icon">
-                            </div>
-
-                        </div>
-
-                        <!-- MENU-TYPE 4 -->
-                        <div class="row-menus">
-
-                            <div class="col-left">
-                            Menus Saisonniers<br>
-                            <small>03/01/2026</small>
-                            </div>
-
-                            <div class="col-center">
-
-                                <div class="menu-line">
-                                    <span class="menu-name">Saumon printanier</span>
-                                    <span class="menu-price">18,90 €</span>
-                                    <span class="menu-status actif">disponible</span>
-                                </div>
-
-                                <div class="menu-line">
-                                    <span class="menu-name">Escalope d’automne</span>
-                                    <span class="menu-price">16,90 €</span>
-                                    <span class="menu-status inactif">indisponible</span>
-                                </div>
-
-                                <div class="menu-line">
-                                    <span class="menu-name">Poisson à la moutarde</span>
-                                    <span class="menu-price">14,90 €</span>
-                                    <span class="menu-status actif">disponible</span>
-                                </div>
-
-                                <div class="menu-line">
-                                    <span class="menu-name">Rôti aux légumes</span>
-                                    <span class="menu-price">17,90 €</span>
-                                    <span class="menu-status actif">disponible</span>
-                                </div>
-
-                            </div>
-
-                            <div class="col-right">
-                            <img src="../assets/pencil-square.svg" class="icon">
-                            <img src="../assets/trash3.svg" class="icon">
-                            </div>
-
-                        </div>
-
-                    </div>
-
+            <div class="client-table">
+                <div class="client-table__row client-table__row--title-primary">
+                    Commandes en cours
                 </div>
+                <div id="commandesEnCoursContainer"></div>
+            </div>
+ <!-- --------------------------------HISTORIQUE DES COMMANDES---------------------------------- -->
+
+            <div class="client-table">
+                <div class="client-table__row client-table__row--title-primary">
+                    Historique des commandes
+                </div>
+                <div id="historiqueContainer"></div>
+            </div>
+
+
         </section>
 
          <section class="shared-highlights">
@@ -333,6 +140,16 @@
             <img src="../assets/images/logo-faitmaison.jpg" alt="Fait maison">
             </div>
         </section>
+
+
+        <div id="adminMessageModal" class="modal-overlay">
+            <div class="modal-box" style="text-align: center;">
+                <p id="adminMessageText"></p>
+                <button class="btn-annuler" onclick="document.getElementById('adminMessageModal').classList.remove('open')">
+                    Fermer
+                </button>
+            </div>
+        </div>
 
 
     </main>

@@ -126,44 +126,63 @@ document.addEventListener("DOMContentLoaded", () => {
   // LOGIN
   // =========================
 
- window.login = async function (email, password) {
-  try {
-    const response = await fetch("/backend/api/login.php", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password })
-    });
+  window.login = async function (email, password) {
+    try {
+      const response = await fetch("/backend/api/login.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
 
-    const result = await response.json();
+      const result = await response.json();
 
-    if (!result.success) {
-      alert("Identifiants incorrects");
-      return;
+      if (!result.success) {
+        alert("Identifiants incorrects");
+        return;
+      }
+
+      localStorage.setItem("currentUser", JSON.stringify(result.user));
+
+      // ✅ Fusion panier guest → panier connecté
+      const panierGuest = JSON.parse(localStorage.getItem("panier_guest")) || [];
+      if (panierGuest.length > 0) {
+        const panierKey = "panier_" + result.user.email;
+        const panierExistant = JSON.parse(localStorage.getItem(panierKey)) || [];
+        const panierFusionne = [...panierExistant, ...panierGuest];
+        localStorage.setItem(panierKey, JSON.stringify(panierFusionne));
+        localStorage.removeItem("panier_guest");
+      }
+
+      redirectByRole(result.user);
+
+    } catch (error) {
+      console.error(error);
+      alert("Erreur serveur");
     }
-
-    localStorage.setItem("currentUser", JSON.stringify(result.user));
-
-    redirectByRole(result.user);
-
-  } catch (error) {
-    console.error(error);
-    alert("Erreur serveur");
-  }
-};
+  };
 
   // =========================
   // REDIRECTION PAR RÔLE
   // =========================
 
-  function redirectByRole(user) {
+ function redirectByRole(user) {
+    // Si une redirection était prévue (ex: après ajout panier)
+    const redirect = localStorage.getItem("redirectAfterLogin");
+    if (redirect && user.role === "client") {
+        localStorage.removeItem("redirectAfterLogin");
+        window.location.href = redirect;
+        return;
+    }
+
+    // Sinon redirection par défaut selon le rôle
     const routes = {
-      client: "/pages/profil-client-desktop.html",
-      admin: "/pages/profil-admin-desktop.html",
-      employe: "/pages/profil-employe-desktop.html"
+        client: "/",                                      // ✅ accueil pour le client
+        admin: "/pages/profil-admin-desktop.html",
+        employe: "/pages/profil-employe-desktop.html"
     };
 
     window.location.href = routes[user.role];
-  }
+}
 
   // =========================
   // PROTECTION DES PAGES

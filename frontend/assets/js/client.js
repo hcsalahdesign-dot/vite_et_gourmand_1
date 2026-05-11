@@ -1,4 +1,29 @@
 // =========================================================
+// INIT
+// =========================================================
+
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("btnValider");
+  if (btn) btn.addEventListener("click", validerCommande);
+
+  const clientMessageCloseButton = document.getElementById("clientMessageCloseButton");
+  if (clientMessageCloseButton) {
+    clientMessageCloseButton.addEventListener("click", fermerMessageClient);
+  }
+
+  const user = getCurrentUser();
+  const titre = document.getElementById("titreClient");
+  if (titre && user) {
+      titre.innerHTML = `Espace Client<br><small>${user.nom}</small>`;
+  }
+
+  afficherPanierClient();
+  afficherCommandesClient();
+});
+
+
+
+// =========================================================
 // CHARGEMENT DES DONNEES
 // =========================================================
 
@@ -88,47 +113,50 @@ function afficherPanierClient() {
 // =========================================================
 
 function afficherCommandesClient() {
-  const container = document.getElementById("clientOrders");
-  if (!container) return;
+    const container = document.getElementById("clientOrders");
+    if (!container) return;
 
-  const commandes = JSON.parse(localStorage.getItem(getCommandesKey())) || [];
-  container.innerHTML = "";
+    const user = getCurrentUser();
+    if (!user) return;
 
-  if (commandes.length === 0) {
-    container.innerHTML = `
-      <div class="row-employe">
-        <div class="col-left">-</div>
-        <div class="col-center">Aucune commande</div>
-        <div class="col-center">-</div>
-        <div class="col-center">0.00 €</div>
-        <div class="col-right">-</div>
-      </div>
-    `;
-    return;
-  }
+    fetch(`/backend/api/get_commandes_client.php?email=${encodeURIComponent(user.email)}`)
+        .then(res => res.json())
+        .then(data => {
+            container.innerHTML = "";
 
-  [...commandes].reverse().forEach((cmd) => {
+            if (!data.success || data.commandes.length === 0) {
+                container.innerHTML = `
+                    <div class="row-employe">
+                        <div class="col-left">-</div>
+                        <div class="col-center">Aucune commande</div>
+                        <div class="col-center">-</div>
+                        <div class="col-center">0.00 €</div>
+                        <div class="col-right">-</div>
+                    </div>
+                `;
+                return;
+            }
 
-    container.innerHTML += `
-      <div class="row-employe">
-        <div class="col-left">
-          ${cmd.nom}<br>
-          <small>${cmd.dateCommande || cmd.date || ""}${cmd.heureCommande ? " - " + cmd.heureCommande : ""}</small>
-        </div>
-
-
-        <div class="col-center">${cmd.nom}</div>
-        <div class="col-center">${cmd.quantite} pers</div>
-        <div class="col-center">${cmd.total.toFixed(2)} €</div>
-
-        <div class="col-right">
-          <span class="${cmd.statut === "En préparation" ? "actif" : "inactif"}">
-            ${cmd.statut}
-          </span>
-        </div>
-      </div>
-    `;
-  });
+            data.commandes.forEach(cmd => {
+                container.innerHTML += `
+                    <div class="row-employe">
+                        <div class="col-left">
+                            ${cmd.nom_menu}<br>
+                            <small>${cmd.date_commande}</small>
+                        </div>
+                        <div class="col-center">${cmd.nom_menu}</div>
+                        <div class="col-center">${cmd.quantite} pers</div>
+                        <div class="col-center">${parseFloat(cmd.total).toFixed(2)} €</div>
+                        <div class="col-right">
+                            <span class="${cmd.statut === 'Livré' ? 'actif' : 'inactif'}">
+                                ${cmd.statut}
+                            </span>
+                        </div>
+                    </div>
+                `;
+            });
+        })
+        .catch(err => console.error("Erreur commandes client :", err));
 }
 
 // =========================================================
@@ -240,20 +268,4 @@ function supprimerItem(id) {
   afficherPanierClient();
 }
 
-// =========================================================
-// INIT
-// =========================================================
-
-document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("btnValider");
-  if (btn) btn.addEventListener("click", validerCommande);
-
-  const clientMessageCloseButton = document.getElementById("clientMessageCloseButton");
-  if (clientMessageCloseButton) {
-    clientMessageCloseButton.addEventListener("click", fermerMessageClient);
-  }
-
-  afficherPanierClient();
-  afficherCommandesClient();
-});
 

@@ -204,14 +204,13 @@ body.page-employe-space {
 }
 
 .menus .col-right {
-  width: 200px;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  gap: 60px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;          /* ✅ centre les enfants */
+    padding: 10px 15px;
+    gap: 3px;
 }
 
 /* lignes internes */
@@ -293,6 +292,37 @@ body.page-employe-space {
   background-color: #27ae60;
 }
 
+
+/* =========================================================
+   Bouton "rupture"
+========================================================= */
+
+
+.btn-rupture {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 700;
+    color: #2ecc71;          /* ✅ vert par défaut */
+    font-family: "Lato", sans-serif;
+    padding: 0;
+}
+
+.btn-rupture::before {
+    content: "⬤ ";
+    color: #2ecc71;          /* ✅ voyant vert */
+}
+
+.btn-rupture.signale {
+    color: #e74c3c;          /* 🔴 rouge après clic */
+    cursor: default;
+    pointer-events: none;
+}
+
+.btn-rupture.signale::before {
+    color: #e74c3c;          /* 🔴 voyant rouge */
+}
 
 /* =========================================================
    STATUTS

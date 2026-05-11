@@ -16,11 +16,11 @@ if (!$email || !$password) {
 $database = new Database();
 $pdo = $database->getConnection();
 
-$stmt = $pdo->prepare("SELECT id, email, mot_de_passe, role FROM utilisateurs WHERE email = ?");
+$stmt = $pdo->prepare("SELECT id, nom, email, mot_de_passe, role FROM utilisateurs WHERE email = ?");
 $stmt->execute([$email]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if (!$user || $user["mot_de_passe"] !== $password) {
+if (!$user || !password_verify($password, $user["mot_de_passe"])) {
     echo json_encode(["success" => false, "message" => "Identifiants incorrects"]);
     exit;
 }
@@ -30,6 +30,7 @@ echo json_encode([
     "user" => [
         "id" => $user["id"],
         "email" => $user["email"],
-        "role" => $user["role"]
+        "role" => $user["role"],
+        "nom" => $user["nom"] 
     ]
 ]);

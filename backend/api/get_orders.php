@@ -7,14 +7,17 @@ try {
 
     $stmt = $db->prepare("
         SELECT 
-            id AS order_id,
-            user_id,
-            total,
-            statut,
-            created_at
-        FROM orders
-        WHERE statut = 'En préparation'
-        ORDER BY created_at ASC
+            o.id AS order_id,
+            o.user_id,
+            o.total,
+            o.statut,
+            o.created_at,
+            o.employee_id,
+            u.nom AS client_nom
+        FROM orders o
+        JOIN utilisateurs u ON o.user_id = u.id
+        WHERE o.statut = 'En préparation'
+        ORDER BY o.created_at ASC
     ");
 
     $stmt->execute();
@@ -31,4 +34,3 @@ try {
         "message" => $e->getMessage()
     ]);
 }
-

@@ -43,7 +43,7 @@ try {
     //  2. Attribution de la commande
     $update = $db->prepare("
         UPDATE orders
-        SET employee_id = ?, statut = 'en_preparation'
+        SET employee_id = ?, statut = 'En préparation'
         WHERE id = ? AND employee_id IS NULL
     ");
 

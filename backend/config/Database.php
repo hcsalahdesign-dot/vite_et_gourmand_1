@@ -4,7 +4,7 @@ class Database {
     private $host = "v_et_g_db";
     private $db_name = "vite_et_gourmand";
     private $username = "root";
-    private $password = "root";
+    private $password = "h!&mHY@_300";
     public $conn;
 
     public function getConnection() {
