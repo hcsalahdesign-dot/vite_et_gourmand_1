@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/backend/config/Database.php';
@@ -72,6 +73,15 @@ $nombreArticles = count($_SESSION['panier']);
 
             <div class="div-wrapper">
                 <div class="div"><a href="/pages/nous-contacter-desktop.html" style="text-decoration:none;color:inherit;">Contact</a></div>
+            </div>
+
+            <!-- On ajoute la classe mobile-only ici -->
+            <div class="div-wrapper mobile-only">
+                <div class="div mobile-auth-link" data-nav="connexion">
+                    <a href="/pages/connexion-desktop.html">
+                        <span>Connexion</span>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>

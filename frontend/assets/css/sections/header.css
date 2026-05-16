@@ -1,3 +1,11 @@
+
+
+/* Version Desktop : on cache le lien de connexion du menu */
+.liens-navigation .mobile-only {
+  display: none !important;
+}
+
+
 /* ===================== */
 /* HEADER */
 /* ===================== */

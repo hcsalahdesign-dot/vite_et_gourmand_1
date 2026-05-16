@@ -6,6 +6,18 @@
 }
 
 @media (max-width: 768px) {
+
+  /* Masque le texte du panier sur mobile */
+  .header-actions .bouton-panier span {
+    display: none !important;
+  }
+
+  /* Optionnel : Ajuste la taille du bouton pour qu'il soit bien carré autour de l'icône */
+  .header-actions .bouton-panier {
+    width: auto !important;
+    padding: 8px !important;
+    min-width: 0 !important;
+  }
   .header .header__nav {
     width: 100%;
     height: 50px;
@@ -31,16 +43,70 @@
     font-size: 30px;
   }
 
+  /* 1. Le bandeau orange initial : visible mais fin */
   .header .liens-navigation {
     display: flex;
     width: 100%;
-    height: 10px;
+    height: 10px; /* Sa hauteur fermée */
     align-items: center;
     justify-content: center;
-    gap: 0;
+    flex-direction: column;
+    gap: 15px;
     padding: 0;
     background-color: #d95605;
+    overflow: hidden; /* Cache les liens quand il fait 10px */
   }
+
+  /* 2. On cache les blocs wrappers des liens par défaut */
+  .header .liens-navigation .div-wrapper {
+    display: none !important;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* C'est cette règle qui bloquait tout ! On la force à s'afficher dans le menu */
+  .header .liens-navigation .div-wrapper .div {
+    display: block !important; 
+  }
+
+  /* 3. QUAND LE JS AJOUTE ACTIVE : Le bandeau s'agrandit */
+  .header .liens-navigation.active {
+    height: auto !important;
+    padding: 20px 0 !important;
+  }
+
+  /* 4. Au clic, on affiche enfin les blocs wrappers contenant les liens */
+  .header .liens-navigation.active .div-wrapper {
+    display: block !important;
+  }
+
+  /* Style des liens cliquables pour qu'ils soient bien visibles */
+  .header .liens-navigation.active a {
+    display: inline-block;
+    padding: 5px 5px;
+    color: #ffffff !important; /* Texte blanc sur fond orange */
+    font-family: "Lato", sans-serif;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  /* 5. Le parent s'agrandit aussi pour ne pas couper le menu orange */
+  .header__nav:has(.liens-navigation.active) {
+    height: auto !important;
+  }
+
+  /* Au clic sur mobile, on force l'affichage du lien Connexion */
+  .header .liens-navigation.active .mobile-only {
+    display: block !important;
+  }
+
+  .liens-navigation.active {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 9999 !important;
+}
+
 
   .header .div {
     display: none;

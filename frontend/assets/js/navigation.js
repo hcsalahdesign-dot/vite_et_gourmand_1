@@ -1,10 +1,27 @@
+console.log("navigation.js chargé");
 
 function getCurrentUser() {
   return JSON.parse(localStorage.getItem("currentUser"));
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
+  
+  // --- GESTION DU MENU BURGER ---
+  const burgerMenu = document.querySelector('.nav__mobile-menu');
+  const navigation = document.querySelector('.liens-navigation');
+
+  console.log("burger :", burgerMenu);
+  console.log("menu :", navigation);
+
+  if (burgerMenu && navigation) {
+    burgerMenu.addEventListener('click', () => {
+        console.log("CLICK DETECTÉ");
+        navigation.classList.toggle('active');
+    });
+    // Le bloc bonus "img" a été supprimé pour éviter le double-clic conflictuel
+  }
+
+  // --- GESTION DE LA NAVIGATION ---
   const navigationMap = {
     accueil: "/index.php",
     menus: "/pages/menus-desktop.html",
@@ -24,46 +41,43 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   document.querySelectorAll("[data-nav]").forEach((element) => {
-  element.addEventListener("click", (e) => {
-    e.preventDefault();
+    element.addEventListener("click", (e) => {
+      e.preventDefault();
 
-    const target = element.dataset.nav;
-    const user = getCurrentUser();
+      const target = element.dataset.nav;
+      const user = getCurrentUser();
 
-    if (user && user.role === "employe") {
-      const blockedTargets = ["accueil", "menus", "contact", "connexion", "inscription", "profilClient", "panier"];
-
-      if (blockedTargets.includes(target)) {
-        window.location.href = navigationMap.profilEmploye;
-        return;
+      if (user && user.role === "employe") {
+        const blockedTargets = ["accueil", "menus", "contact", "connexion", "inscription", "profilClient", "panier"];
+        if (blockedTargets.includes(target)) {
+          window.location.href = navigationMap.profilEmploye;
+          return;
+        }
       }
-    }
 
-    if (user && user.role === "admin") {
-      const blockedTargets = ["accueil", "menus", "contact", "connexion", "inscription", "profilClient", "panier"];
-
-      if (blockedTargets.includes(target)) {
-        window.location.href = navigationMap.profilAdmin;
-        return;
+      if (user && user.role === "admin") {
+        const blockedTargets = ["accueil", "menus", "contact", "connexion", "inscription", "profilClient", "panier"];
+        if (blockedTargets.includes(target)) {
+          window.location.href = navigationMap.profilAdmin;
+          return;
+        }
       }
-    }
 
-    const url = navigationMap[target];
+      const url = navigationMap[target];
+      console.log("Tentative de navigation vers :", url);
 
-    console.log("Tentative de navigation vers :", url);
-
-    if (url) {
-      window.location.href = url;
-    } else {
-      console.error("Cible de navigation inconnue :", target);
-    }
+      if (url) {
+        window.location.href = url;
+      } else {
+        console.error("Cible de navigation inconnue :", target);
+      }
+    });
   });
-});
-
 
   chargerMenusDynamiques("/assets/js/menus.json", "/");
 });
 
+// --- CHARGEMENT DYNAMIQUE DES MENUS ---
 async function chargerMenusDynamiques(jsonUrl, imgBase) {
   const container = document.getElementById("menu-container");
   if (!container) return;
@@ -72,7 +86,6 @@ async function chargerMenusDynamiques(jsonUrl, imgBase) {
 
   try {
     const response = await fetch(jsonUrl);
-
     if (!response.ok) throw new Error("Fichier JSON introuvable");
 
     const data = await response.json();

@@ -24,45 +24,54 @@
 </head>
 
 <body class="page-menu-detail">
-    <header class="header">
-        <nav class="header__nav">
-            <div class="titre-connexion">
-            <h1 class="vite-gourmand">
-                Vite &amp; Gourmand
-            </h1>
+    
+  <header class="header">
+      <nav class="header__nav">
+          <div class="titre-connexion">
+              <h1 class="vite-gourmand">Vite &amp; Gourmand</h1>
 
-            <div class="header-actions">
-                <button class="bouton-panier" id="cartButton" type="button" data-nav="profilClient" style="display: none;">
-                    <img src="../assets/cart2.svg" alt="Panier" class="cart2 ">
-                    <span>Aller au panier</span>
-                </button>
+              <div class="header-actions">
+                <button class="bouton-panier" id="cartButton" type="button">
+                      <img src="/assets/cart2.svg" alt="Panier" class="cart2">
+                      <span>Aller au Panier</span>
+                  </button>
 
-                <button class="bouton-mon-compte d-flex align-items-center" data-nav="connexion">
-                <img src="../assets/person-circle.svg" alt="Utilisateur" class="user me-2">
-                <span>Mon compte/s’inscrire</span>
-                </button>
-            </div>
+                  <button class="bouton-mon-compte d-flex align-items-center" type="button" data-nav="connexion">
+                      <img src="/assets/person-circle.svg" alt="Utilisateur" class="user me-2">
+                      <span>Mon compte / s’inscrire</span>
+                  </button>
+              </div>
 
-            <div class="nav__mobile-menu">
-                <img src="../assets/menu-burger.svg" alt="menu-burger">
-            </div>
-            </div>
+              <div class="nav__mobile-menu">
+                  <img src="/assets/menu-burger.svg" alt="menu-burger">
+              </div>
+          </div>
 
-            <div class="liens-navigation">
-            <div class="div-wrapper">
-                <div class="div" data-nav="accueil">Accueil</div>
-            </div>
+          <div class="liens-navigation">
+              <div class="div-wrapper">
+                  <div class="div"><a href="index.php" style="text-decoration:none;color:inherit;">Accueil</a></div>
+              </div>
 
-            <div class="div-wrapper">
-                <div class="div" data-nav="menus">Menu</div>
-            </div>
+              <div class="div-wrapper">
+                  <div class="div"><a href="/pages/menus-desktop.html" style="text-decoration:none;color:inherit;">Menu</a></div>
+              </div>
 
-            <div class="div-wrapper">
-                <div class="div" data-nav="contact">Contact</div>
-            </div>
-            </div>
-        </nav>
-    </header>
+              <div class="div-wrapper">
+                  <div class="div"><a href="/pages/nous-contacter-desktop.html" style="text-decoration:none;color:inherit;">Contact</a></div>
+              </div>
+
+              <!-- On ajoute la classe mobile-only ici -->
+              <div class="div-wrapper mobile-only">
+                  <div class="div mobile-auth-link" data-nav="connexion">
+                      <a href="/pages/connexion-desktop.html">
+                          <span>Connexion</span>
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </nav>
+  </header>
+
 
   <main class="page-main">
     <section class="menu-page-section">

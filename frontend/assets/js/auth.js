@@ -6,42 +6,83 @@ function estConnecte() {
 }
 
 function updateHeaderAuthState() {
-  const accountButton = document.querySelector(".bouton-mon-compte");
-  const cartButton = document.getElementById("cartButton");
-  if (!accountButton) return;
-
-  const label = accountButton.querySelector("span");
   const user = JSON.parse(localStorage.getItem("currentUser"));
 
-  if (!label) return;
+  // =========================
+  // AUTH MOBILE
+  // =========================
+
+  const mobileAuth = document.querySelector(".mobile-auth-link");
+
+  if (mobileAuth) {
+
+    const mobileLabel = mobileAuth.querySelector("span");
+
+    if (!user) {
+
+      mobileLabel.textContent = "Connexion";
+
+      mobileAuth.setAttribute("data-nav", "connexion");
+
+      mobileAuth.onclick = null;
+
+    } else {
+
+      mobileLabel.textContent = "Déconnexion";
+
+      mobileAuth.removeAttribute("data-nav");
+
+      mobileAuth.onclick = (e) => {
+        e.preventDefault();
+        logout();
+      };
+    }
+  }
+
+
+  const accountButtons = document.querySelectorAll(".bouton-mon-compte");
+  const cartButton = document.getElementById("cartButton");
+
+  accountButtons.forEach((accountButton) => {
+    const label = accountButton.querySelector("span");
+    if (!label) return;
+
+    if (!user) {
+      label.textContent = "Mon compte/s’inscrire";
+      accountButton.setAttribute("data-nav", "connexion");
+      return;
+    }
+
+    label.textContent = "Déconnexion";
+    accountButton.removeAttribute("data-nav");
+
+    accountButton.onclick = () => {
+      logout();
+    };
+  });
+
+  if (!cartButton) return;
 
   if (!user) {
-    label.textContent = "Mon compte/s’inscrire";
-    accountButton.setAttribute("data-nav", "connexion");
-    if (cartButton) cartButton.style.display = "none";
+    cartButton.style.display = "none";
     return;
   }
-
-  label.textContent = "Déconnexion";
-  accountButton.removeAttribute("data-nav");
 
   if (user.role === "client") {
-    if (cartButton) {
-      cartButton.style.display = "inline-flex";
-      cartButton.setAttribute("data-nav", "profilClient");
-    }
-    return;
-  }
-
-  if (user.role === "admin") {
-    if (cartButton) cartButton.style.display = "none";
-    return;
-  }
-
-  if (user.role === "employe") {
-    if (cartButton) cartButton.style.display = "none";
+    cartButton.style.display = "inline-flex";
+    cartButton.setAttribute("data-nav", "profilClient");
+  } else {
+    cartButton.style.display = "none";
   }
 }
+
+document.querySelectorAll(".bouton-mon-compte").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (estConnecte()) logout();
+  });
+});
+
+
 
 function logout() {
   localStorage.removeItem("currentUser");
